@@ -1,13 +1,11 @@
-import React, { useState } from "react";
-
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 import logo from "../images/logo.png";
 import logo from "../imag";
 import logoIcon from "../images/logo-icon.png";
- import { BsLink45Deg } from 'react-icons/fa';
- import { AiOutlinePhone } from 'react-icons/fa';
- import { FaRegUserCircle} from 'react-icons/fa';
+import { BsLink45Deg, AiOutlinePhone, FaRegUserCircle } from 'react-icons/fa';
+
 const Navbar = () => {
   const [click, setClick] = useState(false);
 

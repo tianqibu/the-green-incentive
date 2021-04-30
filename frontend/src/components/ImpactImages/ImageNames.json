@@ -1,0 +1,16 @@
+{
+
+    "bamboo_toothbrush": "plastic_toothbrush",
+    "cotton_bag": "plastic_bag",
+    "metal_bottle": "plastic_bottle",
+    "cloth_nappy": "disposable_nappy",
+    "glass_floss": "plastic_floss",
+    "travel_cup": "disposable_cup",
+    "metal_straw": "plastic_straw",
+    "menstrual_cup": "sanitary_items",
+    "cloth_towel": "paper_towel",
+    "metal_razor": "disposable_razor",
+    "sandwich_wrap": "sandwich_bag",
+    "cloth_wipe": "disposable_wipe"
+
+}

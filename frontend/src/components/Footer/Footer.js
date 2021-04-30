@@ -1,4 +1,3 @@
-im
 const Footer = () => {
     return (
         <div>
