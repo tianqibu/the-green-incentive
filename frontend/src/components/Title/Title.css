@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+:root {
+    --yellow: #DE9E36;
+    --red: #EB5160;
+    --darkest-green: #0A2E36;
+    --medium-green: #54CA90;
+    --light-green: #C3EB78;
+    --white: #FFFFFF;
+}
+
+h1 {
+    font-family: 'Archivo Black', sans-serif;
+    color: var(--darkest-green);
+    font-size: 41px;
+}
