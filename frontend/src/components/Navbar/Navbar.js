@@ -5,9 +5,10 @@ import "./Navbar.css";
 import logo from "../images/logo.png";
 import logo from "../imag";
 import logoIcon from "../images/logo-icon.png";
- import { BsLink45Deg } from 'react-icons/fa';
- import { AiOutlinePhone } from 'react-icons/fa';
- import { FaRegUserCircle} from 'react-icons/fa';
+import { BsLink45Deg } from 'react-icons/fa';
+import { AiOutlinePhone } from 'react-icons/fa';
+import { FaRegUserCircle } from 'react-icons/fa';
+
 const Navbar = () => {
   const [click, setClick] = useState(false);
 
@@ -55,9 +56,9 @@ const Navbar = () => {
               Contact Us <AiOutlinePhone />
             </Link>
           </li>
-         
+
         </ul>
-        
+
       </nav>
     </>
   );
