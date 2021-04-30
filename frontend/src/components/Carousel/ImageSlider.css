@@ -1,0 +1,63 @@
+h1 {
+  text-align: center;
+  text-decoration: overline #8cc63f;
+}
+
+.slider {
+  position: sticky;
+  height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 15px;
+}
+
+.image {
+  width: 80%;
+  height: 60%;
+  max-height: 400px;
+  max-width: 400px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.right-arrow {
+  position: absolute;
+  top: 50%;
+  right: 30%;
+  font-size: 3rem;
+  color: #89a33c;
+  z-index: 10;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+}
+
+.left-arrow {
+  position: absolute;
+  top: 50%;
+  left: 30%;
+  font-size: 3rem;
+  color: #89a33c;
+  z-index: 10;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+}
+
+.slide {
+  opacity: 0;
+  transition-duration: 1s ease;
+}
+
+.slide.active {
+  display: flex;
+  opacity: 1;
+  transition-duration: 1s;
+  transform: scale(1.08);
+  justify-content: center;
+}
