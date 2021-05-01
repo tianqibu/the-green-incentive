@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 import Impact from '../images/impact.png'
 import Resources from '../images/resources-yellow.png'
 import AboutUs from '../components/AboutUs/AboutUs.js'
@@ -8,11 +10,13 @@ const Home = () => {
     return (
         <div className="home-container">
             <AboutUs />
-            <img 
-                src={Impact} 
-                className="impact" 
-                alt="See Your Impact"
-            ></img>
+            <Link to='/impact'>
+                <img 
+                    src={Impact} 
+                    className="impact" 
+                    alt="See Your Impact"
+                ></img>
+            </Link>
             <img 
                 src={Resources} 
                 className="resources" 
