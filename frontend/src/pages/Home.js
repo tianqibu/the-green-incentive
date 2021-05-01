@@ -17,11 +17,13 @@ const Home = () => {
                     alt="See Your Impact"
                 ></img>
             </Link>
-            <img 
-                src={Resources} 
-                className="resources" 
-                alt="Resources"
-            ></img>
+            <Link to='/resources'>
+                <img 
+                    src={Resources} 
+                    className="resources" 
+                    alt="Resources"
+                ></img>
+            </Link>
         </div>
     )
 }

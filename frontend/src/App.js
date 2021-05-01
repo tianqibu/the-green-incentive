@@ -5,6 +5,7 @@ import SignUp from './components/SignUp/SignUp.js'
 
 import Home from './pages/Home'
 import Impact from './pages/Impact'
+import Resources from './pages/Resources'
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
         <SignUp />
       } />
       <Route path='/impact' exact component={Impact} />
+      <Route path='/resources' exact component={Resources} />
     </Router>
     
   );
