@@ -8,45 +8,77 @@
     --white: #FFFFFF;
 }
 
-.container {
+.sign-in-container h1 {
+    color: var(--darkest-green);
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 41px;
+    text-align: center;
+    padding-top: 150px;
+}
+
+.sign-in-container {
     background-image: url("./sign-in-background.png");
     background-size: contain;
     background-repeat: no-repeat;
     margin: auto;
-    height: 500px;
+    height: 650px;
     width: 400px;
-    margin-top: 100px;
+    margin-top: 50px;
     border-radius: 30px;
+    border: solid 1.5px lightgrey;
 }
 
-input {
+.sign-in-container input {
     padding: 10px;
     width: 60%;
     margin: auto;
     display: block;
     margin-top: 20px;
     margin-bottom: 20px;
+    border-radius: 5px;
+    border: solid 1.5px lightgrey;
+    outline: none;
+    background-color: white; /* having trouble seeing this */
 }
 
-input[type=submit] {
+
+.sign-in-container input[type=submit] {
     background-color: var(--red);
     border: none;
     border-radius: 5px;
     color: var(--white);
+    font-size: 17px; 
+    transition: transform 0.2s ease;
 }
 
-form {
-    margin-top: 100px;
+.sign-in-container input[type=submit]:hover {
+    background-color: #F07F8A;
+    cursor: pointer;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px #435058ff;
 }
 
 .sign-up-container {
     text-align: center;
 }
 
-p {
+.sign-in-container p {
     margin: 3px;
 }
 
-a {
+.sign-in-container a {
     color: var(--red);
+}
+
+@media screen and (max-width: 800px) {
+    .sign-in-container {
+        width: 270px;
+        height: 440px;
+    }
+
+    .sign-in-container h1 {
+        padding-top: 70px;
+        font-size: 30px;
+    }
+    
 }

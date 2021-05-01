@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 import logo from "../images/logo.png";
-import logo from "../imag";
 import logoIcon from "../images/logo-icon.png";
 import { BsLink45Deg, AiOutlinePhone, FaRegUserCircle } from 'react-icons/fa';
 
@@ -53,9 +52,9 @@ const Navbar = () => {
               Contact Us <AiOutlinePhone />
             </Link>
           </li>
-         
+
         </ul>
-        
+
       </nav>
     </>
   );
