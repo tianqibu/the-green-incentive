@@ -1,0 +1,20 @@
+.img-container img {
+    width: 40%;
+    margin: 10px;
+    border-radius: 15px;
+}
+
+.img-container {
+    text-align: center;
+}
+
+.garden-img {
+    width: 83%;
+    margin: auto;
+    border-radius: 10px;
+}
+
+.large-img-container {
+    text-align: center;
+    margin-top: 5px;
+}
