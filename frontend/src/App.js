@@ -5,6 +5,7 @@ import SignUp from './components/SignUp/SignUp.js'
 
 import Home from './pages/Home'
 import Impact from './pages/Impact'
+import Resources from './pages/Resources'
 import Dashboard from './pages/Dashboard'
 
 const App = () => {
@@ -14,6 +15,7 @@ const App = () => {
       <Route path='/sign-in' exact component={SignIn} />
       <Route path='/sign-up' exact component={SignUp} />
       <Route path='/impact' exact component={Impact} />
+      <Route path='/resources' exact component={Resources} />
       <Route path='/dashboard' exact component={Dashboard} />
     </Router>
     
