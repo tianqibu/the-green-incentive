@@ -1,0 +1,56 @@
+.impact, .resources {
+    width: 60%;
+    border-radius: 20px;
+    margin: auto;
+    margin-top: 30px;
+}
+
+.resources {
+    margin-bottom: 30px;
+}
+
+.home-container {
+    text-align: center;
+    width: 70%;
+    margin: auto;
+}
+
+.home-container button {
+    background-color: var(--red);
+    border: none;
+    border-radius: 5px;
+    color: var(--white);
+    font-size: 17px; 
+    transition: transform 0.2s ease;
+    width: 20%;
+    padding: 5px;
+    margin-top: 25px;
+}
+
+.home-container h1 {
+    color: var(--dark-green);
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 41px;
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 10px;
+    width: 70%;
+    margin: auto;
+}
+
+.home-container p {
+    width: 50%;
+    margin: auto;
+    font-size: 20px;
+    color: black;
+}
+
+.about-us {
+    background-color: lemonchiffon;
+    width: 60%;
+    display: block;
+    border-radius: 20px;
+    margin: auto;
+    margin-top: 30px;
+    padding-bottom: 25px;
+}

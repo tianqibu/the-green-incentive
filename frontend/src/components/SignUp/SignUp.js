@@ -1,7 +1,7 @@
 import './SignUp.css'
 import validate from './validation'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
 const SignUp = () => {
 

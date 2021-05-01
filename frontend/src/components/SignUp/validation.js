@@ -1,7 +1,6 @@
 export default function validate (values) {
-    let errors = {}
 
-    console.log(values)
+    let errors = {}
 
     if (!values.name) {
         errors.name = "Name required"
@@ -18,7 +17,7 @@ export default function validate (values) {
     if (!values.password) {
         errors.password = "Password is required"
     } else if (values.password.length < 8) {
-        errors.password = "Password needs to be 6 characters or more"
+        errors.password = "Password needs to be 8 characters or more"
     }
 
     if (!values.password2) {
