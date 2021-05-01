@@ -1,7 +1,32 @@
+@media screen and (max-width: 1000px) {
+    .resources-container {
+        width: 100%;
+    }
+}
+
+.resources-container {
+    text-align: center;
+    color: var(--darkest-green);
+}
+
+.resources-container h1 {
+    font-size: 4rem;
+}
+
 .ecosia-logo {
     width: 15%;
     display: block;
     margin-left: auto;
     margin-right: auto;
     margin-top: 2rem;
+}
+
+.ecosia {
+    background-color: lemonchiffon;
+    border-radius: 2rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-top: 2rem;
+    padding-top: 0.1rem;
+    padding-bottom: 1.5rem;
 }
