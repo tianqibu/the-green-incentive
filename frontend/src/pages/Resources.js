@@ -1,5 +1,6 @@
 import SearchBar from '../components/SearchBar/SearchBar.js'
 import EcosiaLogo from '../images/ecosia_logo.png'
+import ResourceImages from '../components/ResourceImages/ResourceImages.js'
 import './Resources.css'
 
 const Resources = () => {
@@ -10,6 +11,7 @@ const Resources = () => {
                 <img src={EcosiaLogo} alt='ecosia logo' className='ecosia-logo'/>
                 <SearchBar />
             </div>
+            <ResourceImages />
         </div>
     )
 }
