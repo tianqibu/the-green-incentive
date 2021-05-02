@@ -8,11 +8,11 @@ const DashboardImages = () => {
     return (
         <div>
             <div className="img-container">
-                <img src={LogActivityImage}></img>
-                <img src={RewardsImage}></img>
+                <img src={LogActivityImage} alt='log activity'/>
+                <img src={RewardsImage} alt='rewards'/>
             </div>
             <div className="large-img-container">
-                <img src={GardenImage} className="garden-img"></img>
+                <img src={GardenImage} className="garden-img" alt='garden'/>
             </div>
         </div>
     )

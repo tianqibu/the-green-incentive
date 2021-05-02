@@ -1,0 +1,14 @@
+.resource-grid {
+    display: grid;
+    grid-template-columns: auto auto;
+    margin-top: 1rem;
+}
+
+.resource-grid img {
+    width: 80%;
+    height: auto;
+    padding: 1rem;
+    border-radius: 50px;
+    margin-left: auto;
+    margin-right: auto;
+}
