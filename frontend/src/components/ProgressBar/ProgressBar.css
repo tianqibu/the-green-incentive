@@ -1,0 +1,27 @@
+:root {
+    --yellow: #DE9E36;
+    --red: #EB5160;
+    --darkest-green: #0A2E36;
+    --medium-green: #54CA90;
+    --light-green: #C3EB78;
+    --white: #FFFFFF;
+}
+
+.progress-bar {
+    position: relative; 
+    height: 20px;
+    width: 350px;
+    border-radius: 50px;
+    border: 1px solid black;
+    margin: auto;
+    box-shadow: 0 4px 10px lightgray;
+}
+
+.filler {
+    background-color: var(--medium-green);
+    height: 100%;
+    border-radius: 50px;
+    transition: width .2s ease-in;
+    text-align: center;
+    font-family:'Courier New', Courier, monospace;
+}

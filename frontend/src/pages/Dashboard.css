@@ -3,6 +3,25 @@
     margin: auto;
 }
 
+.dashboard-container p {
+    text-align: center;
+    font-family: Courier;
+    margin: 5px;
+}
+
+.progress {
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.points {
+    margin-top: -5px;
+}
+
+.bold {
+    font-weight: 700;
+}
+
 .title {
     text-align: center;
 }
