@@ -3,13 +3,13 @@ export default function validate (values) {
     let errors = {}
 
     if (!values.name) {
-        errors.name = "Name required"
+        errors.name = "Name is required"
     } else if (!(/^\S{3,}$/.test(values.name))) {
         errors.name = "Name cannot have whitespace"
     }
 
     if (!values.email) {
-        errors.email = "Email required"
+        errors.email = "Email is required"
     } else if(!/\S+@\S+\.\S+/.test(values.email)) {
         errors.email = "Email address is invalid"
     }

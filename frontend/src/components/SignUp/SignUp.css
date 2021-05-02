@@ -3,11 +3,11 @@
     font-family: 'Archivo Black', sans-serif;
     font-size: 41px;
     text-align: center;
-    padding-top: 150px;
+    padding-top: 140px;
 }
 
 .get-started-container {
-    background-image: url("./sign-up-background.png");
+    background-image: url("../../images/sign-up-background.png");
     background-size: contain;
     background-repeat: no-repeat;
     margin: auto;
@@ -54,24 +54,38 @@
     color: var(--red);
 }
 
+.redirect-container p {
+    color: var(--darkest-green);
+    font-size: 15px;
+}
+
+.redirect-link {
+    color: var(--red);
+    margin-top: 5px;
+}
+
 @media screen and (max-width: 800px) {
     .get-started-container {
-        width: 270px;
-        height: 440px;
+        width: 295px;
+        height: 480px;
     }
 
     .get-started-container h1 {
         font-size: 30px;
-        padding-top: 20px;
+        padding-top: 40px;
     }
 
-.get-started-container input[type=submit] {
-    background-color: var(--red);
-    border: none;
-    border-radius: 5px;
-    color: var(--white);
-    font-size: 13px; 
-    transition: transform 0.2s ease;
-}
+    .get-started-container input {
+        padding: 6px;
+    }
+
+    .get-started-container input[type=submit] {
+        background-color: var(--red);
+        border: none;
+        border-radius: 5px;
+        color: var(--white);
+        font-size: 13px; 
+        transition: transform 0.2s ease;
+    }
 
 }

@@ -1,4 +1,5 @@
 import './SignIn.css'
+import { Link } from 'react-router-dom'
 
 const SignIn = () => {
     return (
@@ -10,9 +11,8 @@ const SignIn = () => {
                     <input type="password" name="password" placeholder="Password" />
                     <input type="submit" value="Sign In" />
                 </form>
-                <div className="sign-up-container">
-                    <p>Don't already have an account?</p>
-                    <a href="/sign-up">Sign up</a>
+                <div className="redirect-container">
+                    <p>Don't already have an account?<br></br><Link to="/sign-up">Sign up</Link></p>
                 </div>
             </div>
         </div>

@@ -1,6 +1,6 @@
-import LogActivityImage from './log-activity.png'
-import RewardsImage from './rewards.png'
-import GardenImage from './garden.png'
+import LogActivityImage from '../../images/log-activity.png'
+import RewardsImage from '../../images/rewards.png'
+import GardenImage from '../../images//garden.png'
 
 import './DashboardImages.css'
 
