@@ -8,6 +8,8 @@ import Impact from './pages/Impact'
 import Resources from './pages/Resources'
 import Dashboard from './pages/Dashboard'
 
+import Footer from './components/Footer/Footer.js'
+
 const App = () => {
   return (
     <Router>
@@ -17,8 +19,8 @@ const App = () => {
       <Route path='/impact' exact component={Impact} />
       <Route path='/resources' exact component={Resources} />
       <Route path='/dashboard' exact component={Dashboard} />
+      <Footer />
     </Router>
-    
   );
 }
 

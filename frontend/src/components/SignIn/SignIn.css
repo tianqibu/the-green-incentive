@@ -17,7 +17,7 @@
 }
 
 .sign-in-container {
-    background-image: url("./sign-in-background.png");
+    background-image: url("../../images/sign-in-background.png");
     background-size: contain;
     background-repeat: no-repeat;
     margin: auto;
@@ -58,7 +58,7 @@
     box-shadow: 0 4px 10px #435058ff;
 }
 
-.sign-up-container {
+.redirect-container {
     text-align: center;
 }
 
@@ -72,12 +72,12 @@
 
 @media screen and (max-width: 800px) {
     .sign-in-container {
-        width: 270px;
-        height: 440px;
+         width: 295px;
+        height: 480px;
     }
 
     .sign-in-container h1 {
-        padding-top: 70px;
+        padding-top: 90px;
         font-size: 30px;
     }
     

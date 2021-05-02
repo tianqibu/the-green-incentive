@@ -12,6 +12,7 @@
     display: inline-block;
     border-radius: 0.5rem;
     border: solid 1.5px lightgrey;
+    outline: none;
 }
 
 .search-button {

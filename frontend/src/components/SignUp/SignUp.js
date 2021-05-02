@@ -1,6 +1,7 @@
 import './SignUp.css'
 import validate from './validation'
 
+import { Link } from 'react-router-dom'
 import { useState } from 'react'
 
 const SignUp = () => {
@@ -69,6 +70,9 @@ const SignUp = () => {
                         type="submit" 
                         value="Create account" 
                     />
+                    <div className="redirect-container">
+                        <p>Already have an account?<br></br><Link to="/sign-in" className="redirect-link">Sign in</Link></p>
+                    </div>
                 </form>
             </div>
         </div>
