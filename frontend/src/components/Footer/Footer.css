@@ -1,5 +1,8 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@200;400&display=swap');
+
 :root {
-    --footer-height: 180px;
+    --footer-height: 160px;
 }
 
 .footer-container {
@@ -33,8 +36,8 @@
     list-style-type: none;
     color: white;
     margin: 7px;
-    font-family: courier;
-    font-style: bold;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 400;
 }
 
 .links-container {

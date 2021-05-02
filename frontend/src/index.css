@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@200;400&display=swap');
+
 :root {
     --yellow: #DE9E36;
     --red: #EB5160;
@@ -15,5 +17,5 @@ body {
 }
 
 p {
-    font-family: courier;
+    font-family: 'Archivo', sans-serif;
 }
