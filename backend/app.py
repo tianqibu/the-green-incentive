@@ -27,7 +27,7 @@ def create_app():
 def home():
     return jsonify({ 'home': 'home page' })
 
-@app.route('/users/login', methods=['GET', 'POST'])
+@app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
         return redirect(url_for('dashboard'))
@@ -35,7 +35,7 @@ def login():
         return jsonify({ 'login': 'login page' })
     # we want to use sessions here and authenticate the post request info
 
-@app.route('/users/register', methods=['GET', 'POST'])
+@app.route('/register', methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
         return redirect(url_for('dashboard'))
@@ -43,7 +43,7 @@ def register():
         return jsonify({ 'register': 'register page' })
     # need to authenticate the registration data and check user does not exist
 
-@app.route('/users/logout')
+@app.route('/logout')
 def logout():
     logout_user()
     return redirect(url_for('home'))
