@@ -25,6 +25,7 @@ def login():
         return redirect(url_for('dashboard'))
     else: 
         return jsonify({ 'login': 'login page' })
+    # we want to use sessions here and authenticate the post request info
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -32,6 +33,7 @@ def register():
         return redirect(url_for('dashboard'))
     else:
         return jsonify({ 'register': 'register page' })
+    # need to authenticate the registration data and check user does not exist
 
 @app.route('/logout')
 def logout():
