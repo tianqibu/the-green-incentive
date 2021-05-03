@@ -11,20 +11,26 @@ const Home = () => {
     return (
         <div className="home-container">
             <AboutUs />
-            <Link to='/impact'>
-                <img 
-                    src={Impact} 
-                    className="impact" 
-                    alt="See Your Impact"
-                ></img>
-            </Link>
-            <Link to='/resources'>
-                <img 
-                    src={Resources} 
-                    className="resources" 
-                    alt="Resources"
-                ></img>
-            </Link>
+            <div className="flex-parent">
+                <div className="flex-child">
+                    <Link to='/impact'>
+                        <img 
+                            src={Impact} 
+                            className="impact" 
+                            alt="See Your Impact"
+                        ></img>
+                    </Link>
+                </div>
+                <div className="flex-child">
+                    <Link to='/resources'>
+                        <img 
+                            src={Resources} 
+                            className="resources" 
+                            alt="Resources"
+                        ></img>
+                    </Link>
+                </div>
+            </div>
         </div>
     )
 }

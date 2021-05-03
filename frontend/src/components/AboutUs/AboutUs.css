@@ -41,7 +41,7 @@
 
 .about-us {
     background-color: lemonchiffon;
-    width: 60%;
+    width: 100%;
     display: block;
     border-radius: 20px;
     margin: auto;
@@ -49,7 +49,7 @@
     padding-bottom: 25px;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 800px) {
     .about-us p {
         font-size: 17px;
         width: 80%;
@@ -61,9 +61,5 @@
 
     .about-us button {
         width: 30%;
-    }
-
-    .about-us {
-        width: 100%;
     }
 }
