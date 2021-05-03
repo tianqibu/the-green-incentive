@@ -4,7 +4,6 @@ import Impact from '../images/impact.png'
 import Resources from '../images/resources-yellow.png'
 
 import AboutUs from '../components/AboutUs/AboutUs.js'
-import Footer from '../components/Footer/Footer.js'
 
 import './Home.css'
 

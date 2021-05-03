@@ -25,14 +25,14 @@ const Footer = () => {
             </div>
             <div className="center child">
                 <div className="media-icons">
-                    <a href=""><FaTwitter style={iconStyles} /></a>
-                    <a href=""><FaFacebook style={iconStyles} /></a>
-                    <a href=""><FaInstagram style={iconStyles} /></a>
+                    <a href="/"><FaTwitter style={iconStyles} /></a>
+                    <a href="/"><FaFacebook style={iconStyles} /></a>
+                    <a href="/"><FaInstagram style={iconStyles} /></a>
                 </div>
                 <p>&#169; The Green Incentive</p>
             </div>
             <div className="right child">
-                <img src={LogoImage}></img>
+                <img src={LogoImage} alt="Logo icon of a tree"></img>
             </div>
         </div>
     )

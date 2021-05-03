@@ -7,6 +7,7 @@ import Home from './pages/Home'
 import Impact from './pages/Impact'
 import Resources from './pages/Resources'
 import Dashboard from './pages/Dashboard'
+import Garden from './pages/Garden'
 
 import Footer from './components/Footer/Footer.js'
 
@@ -19,6 +20,7 @@ const App = () => {
       <Route path='/impact' exact component={Impact} />
       <Route path='/resources' exact component={Resources} />
       <Route path='/dashboard' exact component={Dashboard} />
+      <Route path='/garden' exact component={Garden}/>
       <Footer />
     </Router>
   );
