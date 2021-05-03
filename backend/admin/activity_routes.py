@@ -1,12 +1,14 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
 from app import db
-from models import ActivityLog, ActivityLogSchema
+from models import Activity, ActivitySchema
 
 activity = Blueprint('activity', __name__)
 
-activity_log_schema = ActivityLogSchema(strict=True)
-activities_log_schema = ActivityLogSchema(many=True, strict=True)
+activity_schema = ActivitySchema(strict=True)
+activities_schema = ActivitySchema(many=True, strict=True)
+
+# /admin for routes?
 
 # add activity
 @login_required
@@ -14,21 +16,21 @@ activities_log_schema = ActivityLogSchema(many=True, strict=True)
 def add_activity():
     activity_name = request.json['activity_name']
     activity_description = request.json['activity_description']
-    # activity_points = Activity.query.get(activity_points) 
+    activity_points = request.json['activity_points'] 
 
-    new_activity = ActivityLog(activity_name, activity_description)#, activity_points) 
-    # ^ use activity log model here and get points from db
+    new_activity = Activity(activity_name, activity_description, activity_points) 
+
     db.session.add(new_activity)
     db.session.commit()
 
-    return activity_log_schema.jsonify(new_activity)
+    return activity_schema.jsonify(new_activity)
 
-# get all activities for user. might need user id?
+# get all activities
 @login_required
 @activity.route('/activites', methods=['GET'])
 def get_activities(id):
-    all_activities = ActivityLog.query.all()
-    result = activities_log_schema.dump(all_activities)
+    all_activities = Activity.query.all()
+    result = activities_schema.dump(all_activities)
 
     return jsonify(result.data)
 
@@ -36,36 +38,36 @@ def get_activities(id):
 @login_required
 @activity.route('/activity/<id>', methods=['GET'])
 def get_activity(id):
-    activity = ActivityLog.query.get(id)
+    activity = Activity.query.get(id)
 
-    return activity_log_schema.jsonify(activity)
+    return activity_schema.jsonify(activity)
 
 # update activity
 @login_required
 @activity.route('/activity/<id>', methods=['PUT'])
 def update_activity(id):
-    activity = ActivityLog.query.get(id)
+    activity = Activity.query.get(id)
 
     activity_name = request.json(['activity_name'])
     activity_description = request.json(['activity_description'])
-    # activity_points = Activity.query.get(activity_points)
+    activity_points = request.json['activity_points']
 
     activity.activity_name = activity_name
     activity.activity_description = activity_description
-    # activity.activity_points = activities_points
+    activity.activity_points = activities_points
 
     db.session.commit()
 
-    return activity_log_schema.jsonify(activity)
+    return activity_schema.jsonify(activity)
 
 # delete activity
 @login_required
 @activity.route('activity/<id>', methods=['DELETE'])
 def delete_activity(id):
-    activity = ActivityLog.query.get(id)
+    activity = Activity.query.get(id)
     db.session.delete(activity)
     db.session.commit()
 
-    return activity_log_schema.jsonify(activity)
+    return activity_schema.jsonify(activity)
 
 
