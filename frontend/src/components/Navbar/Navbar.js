@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
-import logo from "../images/logo.png";
-import logoIcon from "../images/logo-icon.png";
-import { BsLink45Deg, AiOutlinePhone, FaRegUserCircle } from 'react-icons/fa';
+import logo from "../../images/logo.png";
+import logoIcon from "../../images/logo-icon.png";
+import { BsLink45Deg } from "react-icons/bs";
+import { FaRegUser, FaPhone, FaTimes, FaBars } from "react-icons/fa";
 
 const Navbar = () => {
   const [click, setClick] = useState(false);
@@ -17,12 +18,13 @@ const Navbar = () => {
           <img className="logo-image" src={logo} alt="Logo" />
         </Link>
         <div className="menu-icon" onClick={handleClick}>
-          <i className={click ? "fas fa-times" : "fas fa-bars"} />
+          <span>{click ? <FaTimes /> : <FaBars />}</span>
         </div>
         <ul className={click ? "nav-menu active" : "nav-menu"}>
           <li className="nav-item">
             <Link to="/" className="nav-links" onClick={closeMobileMenu}>
-              Home <img className="logo-image" src={logoIcon} alt="Logo-icon" />
+              Home
+              <img className="logo-icon" src={logoIcon} alt="Logo-icon" />
             </Link>
           </li>
           <li className="nav-item">
@@ -31,16 +33,12 @@ const Navbar = () => {
               className="nav-links"
               onClick={closeMobileMenu}
             >
-              Resources <BsLink45Deg />
+              Resources <BsLink45Deg className="fa-icons" id="link-icon" />
             </Link>
           </li>
           <li className="nav-item">
-            <Link
-              to="/sign-in"
-              className="nav-links"
-              onClick={closeMobileMenu}
-            >
-              Sign In <FaRegUserCircle />
+            <Link to="/sign-in" className="nav-links" onClick={closeMobileMenu}>
+              Sign In <FaRegUser className="fa-icons" id="user-icon" />
             </Link>
           </li>
           <li className="nav-item">
@@ -49,12 +47,10 @@ const Navbar = () => {
               className="nav-links"
               onClick={closeMobileMenu}
             >
-              Contact Us <AiOutlinePhone />
+              Contact Us <FaPhone className="fa-icons" id="contact-icon" />
             </Link>
           </li>
-
         </ul>
-
       </nav>
     </>
   );

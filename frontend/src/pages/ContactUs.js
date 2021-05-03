@@ -1,9 +1,12 @@
-const ContactUs = () => {
-    return (
-        <div>
-            
-        </div>
-    )
-}
+import React from "react";
+import ContactUsGif from "../components/ContactUsGif/ContactUsGif.js";
 
-export default ContactUs
+const ContactUs = () => {
+  return (
+    <div className="contact-page">
+      <ContactUsGif />
+    </div>
+  );
+};
+
+export default ContactUs;
