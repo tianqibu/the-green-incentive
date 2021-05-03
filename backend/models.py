@@ -9,6 +9,7 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(80), unique=True, nullable=False)
     password_hash = db.Column(db.String(160))
     points = db.Column(db.Integer)
+    # also activities and rewards columns to keep track of past progress
 
     def __repr__(self):
         return '<User %r>' % self.username
@@ -19,6 +20,7 @@ class User(db.Model, UserMixin):
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
 
+# not sure what this does
 @login.user_loader
 def load_user(id):
    return User.query.get(int(id))
