@@ -5,13 +5,20 @@
     --footer-height: 160px;
 }
 
+html {
+    position: relative;
+    min-height: 100%;
+    padding-bottom: 200px;
+}
+
 .footer-container {
     height: var(--footer-height);
     background-color: var(--medium-green);
     width: 100%;
     display: flex;
     bottom: 0;
-    margin-top: 50px;
+    /* margin-top: 50px; */
+    position: absolute;
 }
 
 .child {
