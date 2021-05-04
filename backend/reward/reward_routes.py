@@ -11,36 +11,6 @@ rewards_log_schema = RewardLogSchema(many=True)
 reward_schema = RewardSchema()
 rewards_schema = RewardSchema(many=True)
 
-
-# add reward
-# @login_required
-# @reward.route('/rewards', methods=['GET', 'POST'])
-# def add_reward():
-    # reward_name = request.json['reward_name']
-    # reward_description = request.json['reward_description']
-    # reward_points = Reward.query.get(reward_points) 
-
-    # new_reward = RewardLog(reward_name, reward_description, reward_points) 
-    # ^ use reward log model here and get points from db
-    # db.session.add(new_reward)
-    # db.session.commit()
-
-    # return reward_log_schema.jsonify(new_reward)
-
-
-####################### TEST #######################
-
-@reward.route('/test', methods=['GET', 'POST'])
-def test_rewards():
-    if request.method == 'POST':
-        req_data = request.get_json()
-        print(req_data['username'])
-        return 'JSON posted'
-    if request.method == 'GET':
-        return jsonify({
-            'testing': 'hello'
-            })
-
 ####################### REWARDS LOG (USER) #######################
 
 @reward.route('/log', methods=['GET'])
@@ -93,40 +63,5 @@ def category_rewards(reward_category):
     result = rewards_schema.dump(all_rewards)
 
     return jsonify(result)
-
-# # get single reward
-# @reward.route('/reward/<id>', methods=['GET'])
-# def get_reward(id):
-#     reward = RewardLog.query.get(id)
-
-#     return reward_log_schema.jsonify(reward)
-
-# update reward
-# @login_required
-# @reward.route('/reward/<id>', methods=['PUT'])
-# def update_reward(id):
-#     reward = RewardLog.query.get(id)
-
-#     reward_name = request.json(['reward_name'])
-#     reward_description = request.json(['reward_description'])
-#     reward_points = Reward.query.get(reward_points)
-
-#     reward.reward_name = reward_name
-#     reward.reward_description = reward_description
-#     reward.reward_points = rewards_points
-
-#     db.session.commit()
-
-#     return reward_log_schema.jsonify(reward)
-
-# # delete reward
-# @login_required
-# @reward.route('reward/<id>', methods=['DELETE'])
-# def delete_reward(id):
-#     reward = RewardLog.query.get(id)
-#     db.session.delete(reward)
-#     db.session.commit()
-
-#     return reward_log_schema.jsonify(reward)
 
 

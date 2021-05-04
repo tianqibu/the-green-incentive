@@ -30,54 +30,15 @@ def add_activity_log():
 
 @login_required
 @activity.route('/log', methods=['GET'])
-def get_activities():
+def get_activity_log():
     '''Gets all the activities the user has logged for points'''
     all_activities = ActivityLog.query.all()
     result = activities_log_schema.dump(all_activities)
 
     return jsonify(result)
 
-@activity.route('/all', methods=['GET'])
-def get_activities_all():
+@activity.route('/', methods=['GET'])
+def get_activities():
     all_activities = Activity.query.all()
     result = activities_schema.dump(all_activities)
-
     return jsonify(result)
-
-# # get single activity
-# @login_required
-# @activity.route('/activity/<id>', methods=['GET'])
-# def get_activity(id):
-#     activity = ActivityLog.query.get(id)
-
-#     return activity_log_schema.jsonify(activity)
-
-# # update activity
-# @login_required
-# @activity.route('/activity/<id>', methods=['PUT'])
-# def update_activity(id):
-#     activity = ActivityLog.query.get(id)
-
-#     # activity_name = Activity.query.get(activity_name) 
-#     activity_description = request.json(['activity_description'])
-#     # activity_points = Activity.query.get(activity_points)
-
-#     # activity.activity_name = activity_name
-#     activity.activity_description = activity_description
-#     # activity.activity_points = activities_points
-
-#     db.session.commit()
-
-#     return activity_log_schema.jsonify(activity)
-
-# # delete activity
-# @login_required
-# @activity.route('activity/<id>', methods=['DELETE'])
-# def delete_activity(id):
-#     activity = ActivityLog.query.get(id)
-#     db.session.delete(activity)
-#     db.session.commit()
-
-#     return activity_log_schema.jsonify(activity)
-
-
