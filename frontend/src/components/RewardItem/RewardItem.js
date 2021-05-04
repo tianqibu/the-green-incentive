@@ -14,7 +14,6 @@ const RewardItem = ({name, points, id}) => {
         // Error message
         
         addRewardLog(value)
-
     }
 
     // Get user points

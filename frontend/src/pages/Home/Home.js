@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
 
-import Impact from '../images/impact.png'
-import Resources from '../images/resources-yellow.png'
+import Impact from '../../images/impact.png'
+import Resources from '../../images/resources-yellow.png'
 
-import AboutUs from '../components/AboutUs/AboutUs.js'
+import AboutUs from '../../components/AboutUs/AboutUs.js'
 
 import './Home.css'
 

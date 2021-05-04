@@ -1,11 +1,11 @@
 import './Rewards.css'
 import { useEffect, useState } from 'react'
 
-import VouchersImage from '../images/vouchers.png'
-import FoodImage from '../images/food_plants.png'
-import EcoProducts from '../images/eco_products.png'
-import ActivitiesImage from '../images/activities.png'
-import RewardItem from '../components/RewardItem/RewardItem'
+import VouchersImage from '../../images/vouchers.png'
+import FoodImage from '../../images/food_plants.png'
+import EcoProducts from '../../images/eco_products.png'
+import ActivitiesImage from '../../images/activities.png'
+import RewardItem from '../../components/RewardItem/RewardItem'
 
 
 const Rewards = () => {

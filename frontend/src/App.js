@@ -7,13 +7,13 @@ import SignUp from "./components/SignUp/SignUp.js";
 import Footer from "./components/Footer/Footer.js";
 
 
-import Home from "./pages/Home";
-import Impact from "./pages/Impact";
-import Resources from "./pages/Resources";
-import Dashboard from "./pages/Dashboard";
-import Garden from "./pages/Garden";
-import ContactUs from "./pages/ContactUs";
-import Rewards from './pages/Rewards'
+import Home from "./pages/Home/Home";
+import Impact from "./pages/Impact/Impact";
+import Resources from "./pages/Resources/Resources";
+import Dashboard from "./pages/Dashboard/Dashboard";
+import Garden from "./pages/Garden/Garden";
+import ContactUs from "./pages/ContactUs/ContactUs";
+import Rewards from './pages/Rewards/Rewards'
 
 const App = () => {
 
