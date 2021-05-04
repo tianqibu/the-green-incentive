@@ -28,7 +28,7 @@ def add_activity():
 # get all activities
 @login_required
 @activity.route('/activites', methods=['GET'])
-def get_activities(id):
+def get_activities():
     all_activities = Activity.query.all()
     result = activities_schema.dump(all_activities)
 

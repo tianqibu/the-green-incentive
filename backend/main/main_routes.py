@@ -1,24 +1,26 @@
 from flask import Blueprint, jsonify, redirect, url_for, request, session, flash, Response
 from flask_login import LoginManager, current_user, login_user, logout_user, login_required
-from app.extensions import db
+from app.extensions import db, login
 from models import User, UserSchema
 
 main = Blueprint('main', __name__)
-
-# @main.route('/', methods=['GET'])
-# def home():
-#     return jsonify({ 'home': 'home page' })
+login.login_view = 'login'
 
 ####################### LOG IN #######################
+
+@login.user_loader
+def load_user(id):
+   return User.query.get(int(id))
 
 @main.route('/users/login', methods=['GET', 'POST'])
 def login():
     '''Authenticates user'''
 
-    if current_user.is_authenticated:
-        return redirect(url_for('dashboard'))
-    else: 
-        return jsonify({ 'login': 'login page' })
+    # print(current_user.is_authenticated)
+    # if current_user.is_authenticated:
+    #     return redirect(url_for('dashboard'))
+    # else: 
+    #     return jsonify({ 'login': 'login page' })
 
     # we want to use sessions here and authenticate the post request info
 
@@ -27,10 +29,14 @@ def login():
         form_password = request.json['password'] 
 
         user = User.query.filter_by(username=form_username).first()
-        if user and user.check_password(password, form_password):
+    
+        print(user.check_password(password=form_password))
+
+        if user and user.check_password(password=form_password):
+            print('Test')
             login_user(user)
-            return redirect(url_for('dashboard'))
-        else: 
+            return jsonify({'message': 'User is logged in'})
+        else:  
             return jsonify({'error': 'Login unsuccessful. Please check your email and password and try again.'})
 
 ####################### REGISTER #######################
@@ -39,11 +45,12 @@ def login():
 def register():
     '''Allows user to register'''
 
-    if current_user.is_authenticated:
-        return redirect(url_for('dashboard'))
-    else:
-        return jsonify({ 'register': 'register page' })
-    
+    print(current_user)
+    # if current_user.is_authenticated:
+    #     return redirect(url_for('dashboard'))
+    # else:
+    #     return jsonify({ 'register': 'register page' })
+
     username = request.json['username']
     email = request.json['email']
     password = request.json['password'] 
@@ -54,9 +61,12 @@ def register():
     if User.query.filter(User.email == email).count():
         return jsonify({'error': 'Email has already been used'})
         
-    new_user = User(username, email, user.set_password(password)) 
+    new_user = User(username=username, email=email, points=0, trees_grown=0)
+    new_user.set_password(password)
 
-    db.session.add(user)
+    print('User added')
+
+    db.session.add(new_user)
     db.session.commit()
 
     return jsonify({'message': 'New user has been successfully registered'})
@@ -67,11 +77,8 @@ def register():
 @main.route('/users/logout')
 def logout():
     logout_user()
-    return redirect(url_for('home'))
-
-@main.route('/impact')
-def impact():
-    return jsonify({ 'impact': 'impact page' })
+    return 'Logged out'
+    # return redirect(url_for('home'))
 
 ####################### GET CURRENT USER INFORMATION #######################
 
@@ -88,19 +95,8 @@ def current_user():
         'trees_grown': user.trees_grown
     })
 
-####################### REWARDS #######################
+####################### ADD POINTS #######################
 
-@main.route('/rewards', methods=['GET'])
-def rewards():
-    '''Returns JSON data of all rewards'''
-    rewards = Reward.query.all()
-    return jsonify({ 'rewards': rewards })
-
-@main.route('/rewards/<category>', methods=['GET'])
-def specific_rewards(category):
-    '''Returns JSON data of rewards of a specific category'''
-    rewards = Reward.query.filter_by(reward_category=category)
-    return jsonify({ 'rewards': rewards })
 
 ####################### GARDEN #######################
 

@@ -1,0 +1,7 @@
+Transport|e.g. Walked or used public transport|100
+Used sustainable product|e.g. Reusable grocery bags, reusable coffee cup|100
+Food|e.g. Ate meat-free meal, bought Fairtrade/organic produce|100
+Energy saving|e.g. Hang washing out to dry|100
+Reuse/recycle items|e.g. Reuse glass jar to store food, recycle packaging|100
+Clothing|e.g. Donate old clothes, buy sustainable/second hand clothing|100
+Horticulture|e.g. Grow your own vegetables, plant a tree|100

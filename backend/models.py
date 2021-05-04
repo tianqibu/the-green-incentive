@@ -7,7 +7,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 import datetime
 
-class User(db.Model, UserMixin):
+class User(UserMixin, db.Model):
     __tablename__ = 'user'
     id = db.Column(db.Integer, unique=True, autoincrement=True, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False)
@@ -23,6 +23,10 @@ class User(db.Model, UserMixin):
         self.password_hash = generate_password_hash(password)
 
     def check_password(self, password):
+        # if self.password_hash == password:
+        #     return True
+        # else:
+        #     return False
         return check_password_hash(self.password_hash, password)
 
 class Activity(db.Model):
