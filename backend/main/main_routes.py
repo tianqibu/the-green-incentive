@@ -97,6 +97,29 @@ def current_user():
 
 ####################### ADD POINTS #######################
 
+@login_required
+@main.route('/points/add/<points>')
+def add_points(points):
+    '''Add points to user's total point balance''' 
+
+    user = User.query.filter_by(username=current_user.username).first()
+    user.points += points
+    db.session.commit()
+
+    return 'Points added'
+
+####################### TAKE OFF POINTS #######################
+
+@login_required
+@main.route('/points/subtract/<points>')
+def substract_points(points):
+    '''Subtract points to user's total point balance''' 
+
+    user = User.query.filter_by(username=current_user.username).first()
+    user.points -= points
+    db.session.commit()
+
+    return 'Points added'
 
 ####################### GARDEN #######################
 

@@ -68,11 +68,28 @@ def add_reward_log_entry():
     db.session.commit()
 
 ####################### REWARDS #######################
+
+@reward.route('/', methods=['GET'])
+def all_rewards():
+    '''Returns JSON data of all rewards'''
+    all_rewards = Reward.query.all()
+    result = rewards_schema.dump(all_rewards)
+
+    return jsonify(result)
     
 @reward.route('/<reward_category>', methods=['GET'])
 def category_rewards(reward_category):
-    '''Returns JSON data of rewards for specific category'''
-    all_rewards = Reward.query.all()
+    ''' 
+    Returns JSON data of rewards for a specific category
+
+    ----- Endpoints -----
+    .../api/rewards/Vouchers 
+    .../api/rewards/Activities
+    .../api/rewards/EcoProducts
+    .../api/rewards/FoodAndPlants
+
+    '''
+    all_rewards = Reward.query.filter_by(reward_category=reward_category)
     result = rewards_schema.dump(all_rewards)
 
     return jsonify(result)
