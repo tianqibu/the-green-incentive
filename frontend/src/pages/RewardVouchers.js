@@ -14,7 +14,7 @@ const RewardVouchers = () => {
             <div className="home-container">
             <div className="flex-parent-rm">
                     <div className="flex-child-rm">
-                        <Link to='#'>
+                        <Link to='/SustainableGloss'>
                             <img className="category-img" src={Impact} alt=''></img>
                             <div className="category-text">20% off sustainable gloss</div>
                         </Link>
