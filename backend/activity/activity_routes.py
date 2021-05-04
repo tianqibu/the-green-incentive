@@ -37,8 +37,11 @@ def get_activity_log():
 
     return jsonify(result)
 
+####################### ACTIVITIES #######################
+
 @activity.route('/', methods=['GET'])
 def get_activities():
+    '''Gets all the activities users can log to redeem for points'''
     all_activities = Activity.query.all()
     result = activities_schema.dump(all_activities)
     return jsonify(result)
