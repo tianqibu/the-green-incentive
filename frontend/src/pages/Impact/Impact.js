@@ -1,4 +1,4 @@
-import ImpactImages from '../components/ImpactImages/ImpactImages.js'
+import ImpactImages from '../../components/ImpactImages/ImpactImages.js'
 import './Impact.css'
 
 const Impact = () => {

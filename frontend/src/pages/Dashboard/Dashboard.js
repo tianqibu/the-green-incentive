@@ -1,6 +1,6 @@
-import Title from '../components/Title/Title'
-import DashboardImages from '../components/DashboardImages/DashboardImages'
-import ProgressBar from '../components/ProgressBar/ProgressBar'
+import Title from '../../components/Title/Title'
+import DashboardImages from '../../components/DashboardImages/DashboardImages'
+import ProgressBar from '../../components/ProgressBar/ProgressBar'
 import { useState } from 'react'
 
 import './Dashboard.css'

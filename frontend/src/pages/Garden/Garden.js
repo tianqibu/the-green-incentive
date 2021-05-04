@@ -1,6 +1,6 @@
 import './Garden.css'
-import Title from '../images/garden_title.png'
-import Tree from '../images/tree.png'
+import Title from '../../images/garden_title.png'
+import Tree from '../../images/tree.png'
 import { useState } from 'react'
 
 const Garden = () => {
