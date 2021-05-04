@@ -1,10 +1,11 @@
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { useEffect } from 'react'
 
-import Navbar from "./components/Navbar/Navbar";
+import Navbar from "./components/Navbar/Navbar.js";
 import SignIn from "./components/SignIn/SignIn.js";
 import SignUp from "./components/SignUp/SignUp.js";
 import Footer from "./components/Footer/Footer.js";
+
 
 import Home from "./pages/Home";
 import Impact from "./pages/Impact";
