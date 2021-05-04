@@ -11,6 +11,9 @@ import Resources from "./pages/Resources";
 import Dashboard from "./pages/Dashboard";
 import Garden from "./pages/Garden";
 import ContactUs from "./pages/ContactUs";
+import RewardMain from './pages/RewardMain'
+import RewardVouchers from './pages/RewardVouchers'
+import SustainableGloss from './pages/SustainableGloss'
 
 import Footer from "./components/Footer/Footer.js";
 
@@ -26,6 +29,9 @@ const App = () => {
       <Route path="/contact-us" exact component={ContactUs} />
       <Route path="/dashboard" exact component={Dashboard} />
       <Route path="/garden" exact component={Garden} />
+      <Route path='/RewardMain' exact component={RewardMain}/>
+      <Route path='/RewardVouchers' exact component={RewardVouchers}/>
+      <Route path='/SustainableGloss' exact component={SustainableGloss}/>
       <Footer />
     </Router>
   );
