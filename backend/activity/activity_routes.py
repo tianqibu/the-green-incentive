@@ -9,7 +9,6 @@ activities_schema = ActivitySchema(many=True)
 activity_log_schema = ActivityLogSchema()
 activities_log_schema = ActivityLogSchema(many=True)
 
-
 ####################### ACTIVITY LOG #######################
 
 @login_required

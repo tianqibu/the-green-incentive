@@ -18,22 +18,22 @@ import SustainableGloss from './pages/SustainableGloss'
 
 const App = () => {
 
-  useEffect(() => {
+   useEffect(() => {
 
-    const fetchAllActivities = async () => {
-      const res = await fetch('/api/activities', {
-        method: 'GET',
-      })
+      const fetchAllActivities = async () => {
+        const res = await fetch('/api/activities', {
+          method: 'GET',
+        })
 
-      const data = await res.json()
-      console.log(data)
-      console.log('test')
-      return data
-    }
+        const data = await res.json()
+        console.log(data)
+        console.log('test')
+        return data
+      }
 
-    fetchAllActivities()
+      fetchAllActivities()
 
-  }, [])
+    }, [])
 
   return (
     <Router>
