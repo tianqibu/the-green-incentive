@@ -1,4 +1,5 @@
 from app import db
+from app import ma
 from app import login
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -27,29 +28,52 @@ def load_user(id):
    return User.query.get(int(id))
 
 class Activity(db.Model):
-    # __tablename__ = 'activity'
+    __tablename__ = 'activity'
     id = db.Column(db.Integer, primary_key=True)
-    activity = db.Column(db.String(200))
-    description = db.Column(db.String(400))
-    points = db.Column(db.Integer)
+    activity_name = db.Column(db.String(200))
+    activity_description = db.Column(db.String(400))
+    activity_points = db.Column(db.Integer)
 
 class Reward(db.Model):
     __tablename__ = 'reward'
     id = db.Column(db.Integer, primary_key=True)
-    reward = db.Column(db.String(200))
-    description = db.Column(db.String(400))
-    points = db.Column(db.Integer)
+    reward_name = db.Column(db.String(200))
+    reward_description = db.Column(db.String(400))
+    reward_points = db.Column(db.Integer)
 
 class ActivityLog(db.Model):
     __tablename__ = 'activity-log'
-    id = id = db.Column(db.Integer, primary_key=True)
-    activity = db.Column(db.String(200))
+    id = db.Column(db.Integer, primary_key=True)
+    activity_name = db.Column(db.String(200))
+    activity_description = db.Column(db.String(400))
+    # activity_points = db.Column(db.Integer)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     user = db.relationship(User)
 
 class RewardLog(db.Model):
     __tablename__ = 'reward-log'
-    id = id = db.Column(db.Integer, primary_key=True)
-    reward = db.Column(db.String(200))
+    id = db.Column(db.Integer, primary_key=True)
+    reward_name = db.Column(db.String(200))
+    # reward_points = db.Column(db.Integer)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     user = db.relationship(User)
+
+class UserSchema(ma.SQLAlchemyAutoSchema):
+    class Meta:
+        model = User
+
+class ActivitySchema(ma.SQLAlchemyAutoSchema):
+    class Meta:
+        model = Activity
+
+class RewardSchema(ma.SQLAlchemyAutoSchema):
+    class Meta:
+        model = Reward
+
+class ActivityLogSchema(ma.SQLAlchemyAutoSchema):
+    class Meta:
+        model = ActivityLog
+
+class RewardLogSchema(ma.SQLAlchemyAutoSchema):
+    class Meta:
+        model = RewardLog
