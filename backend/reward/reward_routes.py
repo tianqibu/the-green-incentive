@@ -72,7 +72,7 @@ def add_reward_log_entry():
 @reward.route('/<reward_category>', methods=['GET'])
 def category_rewards(reward_category):
     '''Returns JSON data of rewards for specific category'''
-    all_rewards = Reward.query.all()
+    all_rewards = Reward.query.get(reward_category)
     result = rewards_schema.dump(all_rewards)
 
     return jsonify(result)
