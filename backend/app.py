@@ -1,7 +1,7 @@
 from main.main_routes import main
 from activity.activity_routes import activity
 from reward.reward_routes import reward
-from app.extensions import db, ma, migrate, login, app
+from app.extensions import db, ma, migrate, login, app, cors
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///../thegreenincentive.sqlite'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False

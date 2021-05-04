@@ -1,9 +1,10 @@
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import { useEffect } from 'react'
 
 import Navbar from "./components/Navbar/Navbar";
-
 import SignIn from "./components/SignIn/SignIn.js";
 import SignUp from "./components/SignUp/SignUp.js";
+import Footer from "./components/Footer/Footer.js";
 
 import Home from "./pages/Home";
 import Impact from "./pages/Impact";
@@ -15,9 +16,27 @@ import RewardMain from './pages/RewardMain'
 import RewardVouchers from './pages/RewardVouchers'
 import SustainableGloss from './pages/SustainableGloss'
 
-import Footer from "./components/Footer/Footer.js";
+
 
 const App = () => {
+
+  useEffect(() => {
+
+      const fetchAllActivities = async () => {
+        const res = await fetch('/api/activities', {
+          method: 'GET',
+        })
+
+        const data = await res.json()
+        console.log(data)
+        console.log('test')
+        return data
+      }
+
+      fetchAllActivities()
+
+  }, [])
+
   return (
     <Router>
       <Navbar />
