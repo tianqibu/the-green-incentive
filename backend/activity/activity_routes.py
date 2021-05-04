@@ -1,23 +1,23 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
-from app import db
+from app.extensions import db
 from models import ActivityLog, ActivityLogSchema
 
 activity = Blueprint('activity', __name__)
 
-activity_log_schema = ActivityLogSchema(strict=True)
-activities_log_schema = ActivityLogSchema(many=True, strict=True)
+activity_log_schema = ActivityLogSchema()
+activities_log_schema = ActivityLogSchema(many=True)
 
 # add activity
 @login_required
 @activity.route('/activities', methods=['GET', 'POST'])
 def add_activity():
-    activity_name = request.json['activity_name']
+    # activity_name = ActivityLog.query.get(activity.activity_name) ?????
     activity_description = request.json['activity_description']
-    # activity_points = Activity.query.get(activity_points) 
+    # activity_points = ActivityLog.query.get(activity.activity_points) 
 
-    new_activity = ActivityLog(activity_name, activity_description)#, activity_points) 
-    # ^ use activity log model here and get points from db
+    new_activity = ActivityLog(activity_description)#, activity_points, activity_name) 
+    # ^ use activity log model here and get points and name from db
     db.session.add(new_activity)
     db.session.commit()
 
@@ -46,11 +46,11 @@ def get_activity(id):
 def update_activity(id):
     activity = ActivityLog.query.get(id)
 
-    activity_name = request.json(['activity_name'])
+    # activity_name = Activity.query.get(activity_name) 
     activity_description = request.json(['activity_description'])
     # activity_points = Activity.query.get(activity_points)
 
-    activity.activity_name = activity_name
+    # activity.activity_name = activity_name
     activity.activity_description = activity_description
     # activity.activity_points = activities_points
 

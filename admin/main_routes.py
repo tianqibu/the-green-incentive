@@ -1,17 +1,19 @@
 from flask import Blueprint, jsonify, redirect, url_for, request, session, flash, Response
-from flask_login import LoginManager, current_user, login_user, logout_user, login_required
+from flask_login import current_user, login_user, logout_user, login_required
 from app.extensions import db
 from models import User, UserSchema
 
+# /admin routes ??
+
 main = Blueprint('main', __name__)
 
-# @main.route('/', methods=['GET'])
-# def home():
-#     return jsonify({ 'home': 'home page' })
+@main.route('/', methods=['GET'])
+def home():
+    return jsonify({ 'home': 'home page' })
 
 ####################### LOG IN #######################
 
-@main.route('/users/login', methods=['GET', 'POST'])
+@main.route('/login', methods=['GET', 'POST'])
 def login():
     '''Authenticates user'''
 
@@ -31,11 +33,11 @@ def login():
             login_user(user)
             return redirect(url_for('dashboard'))
         else: 
-            return jsonify({'error': 'Login unsuccessful. Please check your email and password and try again.'})
+            return jsonify('error': 'Login unsuccessful. Please check your email and password and try again.')
 
 ####################### REGISTER #######################
 
-@main.route('/users/register', methods=['GET', 'POST'])
+@main.route('/register', methods=['GET', 'POST'])
 def register():
     '''Allows user to register'''
 
@@ -59,12 +61,12 @@ def register():
     db.session.add(user)
     db.session.commit()
 
-    return jsonify({'message': 'New user has been successfully registered'})
+    return jsonify{'message': 'New user has been successfully registered'}
 
 ####################### LOGOUT #######################
 
 @login_required
-@main.route('/users/logout')
+@main.route('/logout')
 def logout():
     logout_user()
     return redirect(url_for('home'))
@@ -73,11 +75,18 @@ def logout():
 def impact():
     return jsonify({ 'impact': 'impact page' })
 
-####################### GET CURRENT USER INFORMATION #######################
+@main.route('/resources')
+def resources():
+    return jsonify({ 'resources': 'resources page' })
+
+@login_required
+@main.route('/dashboard')
+def dashboard():
+    return jsonify({ 'dashboard': 'dashboard page' })
 
 @login_required
 @main.route('/users/current')
-def current_user():
+def garden():
     '''Returns JSON data with all information for the currently logged in user'''
     user = User.query.filter_by(username=current_user.username).first()
     return jsonify({ 
@@ -88,24 +97,8 @@ def current_user():
         'trees_grown': user.trees_grown
     })
 
-####################### REWARDS #######################
-
-@main.route('/rewards', methods=['GET'])
-def rewards():
-    '''Returns JSON data of all rewards'''
-    rewards = Reward.query.all()
-    return jsonify({ 'rewards': rewards })
-
-@main.route('/rewards/<category>', methods=['GET'])
-def specific_rewards(category):
-    '''Returns JSON data of rewards of a specific category'''
-    rewards = Reward.query.filter_by(reward_category=category)
-    return jsonify({ 'rewards': rewards })
-
-####################### GARDEN #######################
-
 @main.route('/trees/add')
-def tree():
+def garden():
     '''Updates user instance and increases the number of trees grown by the user by one'''
     user = User.query.filter_by(username=current_user.username).first()
     user.trees_grown += 1
