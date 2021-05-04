@@ -2,10 +2,10 @@ export default function validate (values) {
 
     let errors = {}
 
-    if (!values.name) {
-        errors.name = "Name is required"
-    } else if (!(/^\S{3,}$/.test(values.name))) {
-        errors.name = "Name cannot have whitespace"
+    if (!values.username) {
+        errors.username = "Username is required"
+    } else if (!(/^\S{3,}$/.test(values.username))) {
+        errors.username = "Username cannot have whitespace"
     }
 
     if (!values.email) {
