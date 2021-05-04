@@ -94,6 +94,7 @@ def current_user():
     '''Returns JSON data with all information for the currently logged in user'''
     user = User.query.filter_by(username=current_user.username).first()
     return jsonify({ 
+        'id': user.id,
         'user': user.username,
         'email': user.email,
         'password': user.password,
