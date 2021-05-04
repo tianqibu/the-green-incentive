@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
-from app import db
+from app.extensions import db
 from models import Reward, RewardSchema
 
 reward = Blueprint('reward', __name__)
@@ -14,11 +14,11 @@ rewards_schema = RewardSchema(many=True, strict=True)
 @login_required
 @reward.route('/rewards', methods=['GET', 'POST'])
 def add_reward():
+    reward_category = request.json['reward_category']
     reward_name = request.json['reward_name']
-    reward_description = request.json['reward_description']
     reward_points = request.json['reward_points'] 
 
-    new_reward = Reward(reward_name, reward_description, reward_points) 
+    new_reward = Reward(reward_category, reward_name, reward_points) 
 
     db.session.add(new_reward)
     db.session.commit()
@@ -27,8 +27,17 @@ def add_reward():
 
 # get all rewards
 @login_required
-@reward.route('/activites', methods=['GET'])
+@reward.route('/rewards', methods=['GET'])
 def get_rewards(id):
+    all_rewards = Reward.query.all()
+    result = rewards_schema.dump(all_rewards)
+
+    return jsonify(result.data)
+
+# get rewards by category
+@login_required
+@reward.route('/rewards/<reward_category>', methods=['GET'])
+def get_rewards(reward_category):
     all_rewards = Reward.query.all()
     result = rewards_schema.dump(all_rewards)
 
@@ -48,12 +57,12 @@ def get_reward(id):
 def update_reward(id):
     reward = Reward.query.get(id)
 
+    reward_category = request.json['reward_category']
     reward_name = request.json(['reward_name'])
-    reward_description = request.json(['reward_description'])
     reward_points = request.json['reward_points']
 
+    reward.reward_category = reward_category
     reward.reward_name = reward_name
-    reward.reward_description = reward_description
     reward.reward_points = rewards_points
 
     db.session.commit()

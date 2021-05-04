@@ -1,0 +1,36 @@
+[{
+        "activity_name": "Transport",
+        "activity_example": "e.g. Walked or used public transport",
+        "activity_points": 100
+    },
+    {
+        "activity_name": "Used sustainable product",
+        "activity_example": "e.g. Reusable grocery bags, reusable coffee cup",
+        "activity_points": 100
+    },
+    {
+        "activity_name": "Food",
+        "activity_example": "e.g. Ate meat-free meal, bought Fairtrade/organic produce",
+        "activity_points": 100
+    },
+    {
+        "activity_name": "Energy saving",
+        "activity_example": "e.g. Hang washing out to dry",
+        "activity_points": 100
+    },
+    {
+        "activity_name": "Reuse/recycle items",
+        "activity_example": "e.g. Reuse glass jar to store food, recycle packaging",
+        "activity_points": 100
+    },
+    {
+        "activity_name": "Clothing",
+        "activity_example": "e.g. Donate old clothes, buy sustainable/second hand clothing",
+        "activity_points": 100
+    },
+    {
+        "activity_name": "Horticulture",
+        "activity_example": "e.g. Grow your own vegetables, plant a tree",
+        "activity_points": 100
+    }
+]

@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
-from app import db
+from app.extensions import db
 from models import Activity, ActivitySchema
 
 activity = Blueprint('activity', __name__)
@@ -15,10 +15,10 @@ activities_schema = ActivitySchema(many=True, strict=True)
 @activity.route('/activities', methods=['GET', 'POST'])
 def add_activity():
     activity_name = request.json['activity_name']
-    activity_description = request.json['activity_description']
+    activity_example = request.json['activity_example']
     activity_points = request.json['activity_points'] 
 
-    new_activity = Activity(activity_name, activity_description, activity_points) 
+    new_activity = Activity(activity_name, activity_example, activity_points) 
 
     db.session.add(new_activity)
     db.session.commit()
@@ -28,7 +28,7 @@ def add_activity():
 # get all activities
 @login_required
 @activity.route('/activites', methods=['GET'])
-def get_activities(id):
+def get_activities():
     all_activities = Activity.query.all()
     result = activities_schema.dump(all_activities)
 
@@ -49,11 +49,11 @@ def update_activity(id):
     activity = Activity.query.get(id)
 
     activity_name = request.json(['activity_name'])
-    activity_description = request.json(['activity_description'])
+    activity_example = request.json(['activity_example'])
     activity_points = request.json['activity_points']
 
     activity.activity_name = activity_name
-    activity.activity_description = activity_description
+    activity.activity_example = activity_example
     activity.activity_points = activities_points
 
     db.session.commit()

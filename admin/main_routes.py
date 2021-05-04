@@ -1,26 +1,26 @@
 from flask import Blueprint, jsonify, redirect, url_for, request, session, flash, Response
-from flask_login import LoginManager, current_user, login_user, logout_user, login_required
-from app.extensions import db, login
+from flask_login import current_user, login_user, logout_user, login_required
+from app.extensions import db
 from models import User, UserSchema
 
+# /admin routes ??
+
 main = Blueprint('main', __name__)
-login.login_view = 'login'
+
+@main.route('/', methods=['GET'])
+def home():
+    return jsonify({ 'home': 'home page' })
 
 ####################### LOG IN #######################
 
-@login.user_loader
-def load_user(id):
-   return User.query.get(int(id))
-
-@main.route('/users/login', methods=['GET', 'POST'])
+@main.route('/login', methods=['GET', 'POST'])
 def login():
     '''Authenticates user'''
 
-    # print(current_user.is_authenticated)
-    # if current_user.is_authenticated:
-    #     return redirect(url_for('dashboard'))
-    # else: 
-    #     return jsonify({ 'login': 'login page' })
+    if current_user.is_authenticated:
+        return redirect(url_for('dashboard'))
+    else: 
+        return jsonify({ 'login': 'login page' })
 
     # we want to use sessions here and authenticate the post request info
 
@@ -29,28 +29,23 @@ def login():
         form_password = request.json['password'] 
 
         user = User.query.filter_by(username=form_username).first()
-    
-        print(user.check_password(password=form_password))
-
-        if user and user.check_password(password=form_password):
-            print('Test')
+        if user and user.check_password(password, form_password):
             login_user(user)
-            return jsonify({'message': 'User is logged in'})
-        else:  
-            return jsonify({'error': 'Login unsuccessful. Please check your email and password and try again.'})
+            return redirect(url_for('dashboard'))
+        else: 
+            return jsonify('error': 'Login unsuccessful. Please check your email and password and try again.')
 
 ####################### REGISTER #######################
 
-@main.route('/users/register', methods=['GET', 'POST'])
+@main.route('/register', methods=['GET', 'POST'])
 def register():
     '''Allows user to register'''
 
-    print(current_user)
-    # if current_user.is_authenticated:
-    #     return redirect(url_for('dashboard'))
-    # else:
-    #     return jsonify({ 'register': 'register page' })
-
+    if current_user.is_authenticated:
+        return redirect(url_for('dashboard'))
+    else:
+        return jsonify({ 'register': 'register page' })
+    
     username = request.json['username']
     email = request.json['email']
     password = request.json['password'] 
@@ -61,30 +56,37 @@ def register():
     if User.query.filter(User.email == email).count():
         return jsonify({'error': 'Email has already been used'})
         
-    new_user = User(username=username, email=email, points=0, trees_grown=0)
-    new_user.set_password(password)
+    new_user = User(username, email, user.set_password(password)) 
 
-    print('User added')
-
-    db.session.add(new_user)
+    db.session.add(user)
     db.session.commit()
 
-    return jsonify({'message': 'New user has been successfully registered'})
+    return jsonify{'message': 'New user has been successfully registered'}
 
 ####################### LOGOUT #######################
 
 @login_required
-@main.route('/users/logout')
+@main.route('/logout')
 def logout():
     logout_user()
-    return 'Logged out'
-    # return redirect(url_for('home'))
+    return redirect(url_for('home'))
 
-####################### GET CURRENT USER INFORMATION #######################
+@main.route('/impact')
+def impact():
+    return jsonify({ 'impact': 'impact page' })
+
+@main.route('/resources')
+def resources():
+    return jsonify({ 'resources': 'resources page' })
+
+@login_required
+@main.route('/dashboard')
+def dashboard():
+    return jsonify({ 'dashboard': 'dashboard page' })
 
 @login_required
 @main.route('/users/current')
-def current_user():
+def garden():
     '''Returns JSON data with all information for the currently logged in user'''
     user = User.query.filter_by(username=current_user.username).first()
     return jsonify({ 
@@ -95,13 +97,8 @@ def current_user():
         'trees_grown': user.trees_grown
     })
 
-####################### ADD POINTS #######################
-
-
-####################### GARDEN #######################
-
 @main.route('/trees/add')
-def tree():
+def garden():
     '''Updates user instance and increases the number of trees grown by the user by one'''
     user = User.query.filter_by(username=current_user.username).first()
     user.trees_grown += 1
