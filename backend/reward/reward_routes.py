@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-from flask_login import login_required
+from flask_login import login_required, current_user
 from app.extensions import db
 from models import RewardLog, RewardLogSchema, Reward, RewardSchema
 
@@ -13,11 +13,12 @@ rewards_schema = RewardSchema(many=True)
 
 ####################### REWARDS LOG (USER) #######################
 
+@login_required
 @reward.route('/log', methods=['GET'])
 def get_reward_log():
     '''Returns JSON data of all rewards logged by user'''
-    # need user ID
-    all_rewards = RewardLog.query.all()
+    
+    all_rewards = RewardLog.query.filter_by(user_id=current_user.id)
     result = rewards_log_schema.dump(all_rewards)
 
     return jsonify(result)
@@ -30,12 +31,15 @@ def add_reward_log_entry():
     # get data from request body
     req_data = request.get_json()
     user_id = current_user.id
+    print(user_id)
     reward_id = req_data['reward_id']
 
     # add entry to RewardLog table
     new_reward_log_entry = RewardLog(reward_id=reward_id, user_id=user_id)
     db.session.add(new_reward_log_entry)
     db.session.commit()
+
+    return jsonify({'message': 'reward has been logged'})
 
 ####################### REWARDS #######################
 

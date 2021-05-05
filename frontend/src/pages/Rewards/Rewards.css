@@ -36,7 +36,9 @@
 }
 
 .rewards-container img {
-    height: 250px;
+    /* height: 250px; */
+    position: relative;
+    width: 85%;
     margin: auto;
     border-radius: 15px;
     margin-left: 10px;
@@ -57,3 +59,15 @@
     transform: scale(1.2);
 }
 
+@media screen and (max-width: 900px) {
+    .img-child {
+        width: 50%;
+    }
+
+
+.rewards-container img {
+    /* height: 80%; */
+    width: 80%;
+    margin: 20px;
+}
+}

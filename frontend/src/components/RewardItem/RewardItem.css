@@ -1,4 +1,4 @@
-.reward-item-container h1, button {
+.reward-item-container h1, .reward-item-container button {
     display: inline;
 }
 
@@ -49,4 +49,26 @@
 
 .child-three {
     width: 30%;
+}
+
+@media screen and (max-width: 900px) {
+    .reward-item-container {
+        padding: 15px;
+    }
+
+    .child-one {
+        width: 50%;
+    }
+    
+    .child-two {
+        width: 30%;
+    }
+    
+    .child-three {
+        width: 20%;
+    }
+
+    .reward-item-container h3, .reward-item-container h2 {
+        font-size: 1em;
+    }
 }
