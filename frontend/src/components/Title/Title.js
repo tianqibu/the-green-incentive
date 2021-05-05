@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types'
 import './Title.css'
 
-const Title = ({ title }) => {
+const Title = ({ user }) => {
     return (
-            <h1>{title}</h1>
+            <h1>Hi, {user}</h1>
     )
 }
 
