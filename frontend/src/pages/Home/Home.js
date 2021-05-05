@@ -1,20 +1,13 @@
 import { Link } from "react-router-dom";
 
-<<<<<<< HEAD:frontend/src/pages/Home.js
-import Impact from "../images/impact.png";
-import Resources from "../images/resources-yellow.png";
+import Impact from "../../images/impact.png";
+import Resources from "../../images/resources-yellow.png";
 
-import AboutUs from "../components/AboutUs/AboutUs.js";
-=======
-import Impact from '../../images/impact.png'
-import Resources from '../../images/resources-yellow.png'
-
-import AboutUs from '../../components/AboutUs/AboutUs.js'
->>>>>>> d65b2001e4eafb2f432db7fe7ea9693372de04a2:frontend/src/pages/Home/Home.js
+import AboutUs from "../../components/AboutUs/AboutUs.js";
 
 import "./Home.css";
-import ImageSlider from "../components/Carousel/ImageSlider";
-import { SliderData } from "../components/Carousel/SliderData";
+import ImageSlider from "../../components/Carousel/ImageSlider";
+import { SliderData } from "../../components/Carousel/SliderData";
 
 const Home = () => {
   return (
