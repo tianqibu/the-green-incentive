@@ -97,7 +97,7 @@ def get_user_info():
     user = User.query.filter_by(username=current_user.username).first()
     return jsonify({ 
         'id': user.id,
-        'user': user.username,
+        'username': user.username,
         'email': user.email,
         'password': user.password_hash,
         'points': user.points,

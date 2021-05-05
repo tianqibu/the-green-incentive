@@ -33,6 +33,37 @@
     font-size: 30px;
     color: var(--darkest-green)
 }
+
+.garden-container h3 {
+    margin-top: -50px;
+    font-size: 20px;
+    color: var(--darkest-green);
+    font-family: Archivo, sans-serif;
+    width: 50%;
+    text-align: center;
+    margin: auto;
+}
+
+.garden-container button {
+    background-color: var(--red);
+    border: none;
+    border-radius: 5px;
+    color: var(--white);
+    font-size: 17px; 
+    transition: transform 0.2s ease;
+    width: 120px;
+    padding: 7px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+    
+.garden-container button:hover {
+    background-color: #F07F8A;
+    cursor: pointer;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px #435058ff;
+}
+
 @media screen and (max-width: 800px) {
     .tree {
         height: 70px;
@@ -48,5 +79,11 @@
 
     .garden-container {
         padding-bottom: 10px;
+    }
+
+    .garden-container h3 {
+        padding-top: 20px;
+        font-size: 17px; 
+        width: 50%;
     }
 }
