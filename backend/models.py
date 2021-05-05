@@ -53,9 +53,6 @@ class ActivityLog(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     user = db.relationship(User)
 
-    # def __init__(self):
-    #     self.date = datetime.datetime.now()
-
 class RewardLog(db.Model):
     __tablename__ = 'reward-log'
     id = db.Column(db.Integer, primary_key=True)
@@ -79,7 +76,10 @@ class RewardSchema(ma.SQLAlchemyAutoSchema):
 class ActivityLogSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = ActivityLog
+        include_fk = True
 
 class RewardLogSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = RewardLog
+        include_fk = True
+    
