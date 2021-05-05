@@ -44,7 +44,7 @@ const Activities = () => {
     }
 
     const addActivity = async () => {
-        if (activity.id <= 0) {
+        if (activity <= 0) {
             alert('Please select an activity.')
         } else if (activityDescription.length === 0) {
             alert('Please input an activity description.')
