@@ -16,20 +16,22 @@ const ViewLog = () => {
         getActivityLog()
     }, [])
 
-    // const getActivity = async () => {
-    //     const res = await fetch(`/api/activities/${e.target.value}`, {
-    //         method: 'GET',
-    //     })
-    //     const data = await res.json()
-    //     setActivity(data)
-    // }
+    const handleClick = () => {
+        const getActivity = async (activity) => {
+            const res = await fetch(`/api/activities/${activity.activity_id}`, {
+                method: 'GET',
+            })
+            const data = await res.json()
+            setActivity(data)
+        }
 
-    // getActivity()
+        getActivity(activity)
+    }
 
     return (
         <div>
-            {activityLog.map(activity => (
-                <p key={activity.id} value={activity.id}>{(activity.date).substring(0,10)} | {activity.activity_description} |</p>
+            {activityLog.map(activity => ( getActivity(activity),
+                <p key={activity.id} value={activity.id}>{(activity.date).substring(0,10)} | {activity.activity_description} | {getActivity(activity).activity_name}</p>
             ))}
         </div>
     )

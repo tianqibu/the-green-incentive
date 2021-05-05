@@ -70,7 +70,7 @@ const Activities = () => {
                 <div>
                     <label>Select an activity:</label>
                     <select onChange={handleChange}>
-                        <option value='-1' defaultSelected='true' >Select an activity:</option>
+                        <option value='-1'>Select an activity:</option>
                         {activities.map(activity => (
                             <option key={activity.id} value={activity.id}>{activity.activity_name}</option>
                         ))}
