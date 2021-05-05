@@ -1,5 +1,4 @@
 import './RewardItem.css'
-// import { useState, useEffect } from 'react'
 
 const RewardItem = ({name, points, id, pointsBalance, updateUIPoints }) => {
 
@@ -9,7 +8,7 @@ const RewardItem = ({name, points, id, pointsBalance, updateUIPoints }) => {
             console.log('Total points: ', pointsBalance)
             console.log('Points: ', points)
             alert('Error! You do not have enough points.')
-        } else if (pointsBalance >= points && reward_id == 13 ) {
+        } else if (pointsBalance >= points && reward_id === 13 ) {
             alert('Sucess! A tree has been planted in your name. Check your garden.')
             addTree()
             addRewardLog(reward_id)

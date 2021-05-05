@@ -17,13 +17,6 @@ def login():
     '''Authenticates user'''
 
     print(current_user)
-    # print(current_user.is_authenticated)
-    # if current_user.is_authenticated:
-    #     return redirect(url_for('dashboard'))
-    # else: 
-    #     return jsonify({ 'login': 'login page' })
-
-    # we want to use sessions here and authenticate the post request info
 
     if request.method == 'POST':
         form_username = request.json['username']
@@ -48,12 +41,6 @@ def login():
 def register():
     '''Allows user to register'''
 
-    # print(current_user.is_authenticated)
-    # if current_user.is_authenticated:
-    #     return redirect('http://localhost:3000/dashboard')
-    # else:
-    #     return jsonify({ 'register': 'register page' })
-
     username = request.json['username']
     email = request.json['email']
     password = request.json['password'] 
@@ -66,7 +53,7 @@ def register():
         flash('Email already in use.')
         return jsonify({'error': 'Email has already been used'})
         
-    new_user = User(username=username, email=email, points=0, trees_grown=0)
+    new_user = User(username=username, email=email, points=0, trees_grown=0, goal=0)
     new_user.set_password(password)
 
     print('User added')
@@ -101,7 +88,8 @@ def get_user_info():
         'email': user.email,
         'password': user.password_hash,
         'points': user.points,
-        'trees_grown': user.trees_grown
+        'trees_grown': user.trees_grown,
+        'goal': user.goal
     })
 
 ####################### ADD POINTS #######################
@@ -139,3 +127,13 @@ def tree():
     user.trees_grown += 1
     db.session.commit()
     return jsonify({ 'trees': user.trees_grown })
+
+####################### GARDEN #######################
+
+@main.route('/goals/<int:points>')
+def add_goal(points):
+    '''Adds a points goal for the user'''
+    user = User.query.filter_by(username=current_user.username).first()
+    user.goal = points
+    db.session.commit()
+    return 'Goal added'

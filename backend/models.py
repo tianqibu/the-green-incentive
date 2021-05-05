@@ -16,6 +16,7 @@ class User(UserMixin, db.Model):
     password_hash = db.Column(db.String(160))
     points = db.Column(db.Integer)
     trees_grown = db.Column(db.Integer)
+    goal = db.Column(db.Integer)
 
     def __repr__(self):
         return '<User %r>' % self.username
@@ -24,10 +25,6 @@ class User(UserMixin, db.Model):
         self.password_hash = generate_password_hash(password)
 
     def check_password(self, password):
-        # if self.password_hash == password:
-        #     return True
-        # else:
-        #     return False
         return check_password_hash(self.password_hash, password)
 
 class Activity(db.Model):
@@ -78,8 +75,6 @@ class ActivityLogSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = ActivityLog
         include_fk = True
-        # activity = fields.Nested(ActivitySchema)
-
 
 class RewardLogSchema(ma.SQLAlchemyAutoSchema):
     class Meta:

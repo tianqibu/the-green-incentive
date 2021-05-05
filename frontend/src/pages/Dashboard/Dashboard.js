@@ -9,23 +9,23 @@ const Dashboard = () => {
 
     const [ userDetails, setUserDetails ] = useState({
         username: '',
-        points: ''
+        points: '',
+        goal: ''
     })
 
-    const [percentage, setPercentage] = useState('')
-    const [goal, setGoal] = useState('')
-
     const handleChange = (e) => {
-        setGoal(e)
+        setUserDetails({ ...userDetails, goal: e })
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        const calc_percentage = userDetails.points/goal * 100
-        setPercentage(calc_percentage)
-    }
+        const percentage = Math.round(userDetails.points/userDetails.goal * 100)
+        localStorage.setItem('percentage', percentage);
 
-    
+        await fetch(`/api/goals/${userDetails.goal}`, {
+            method: 'GET',
+          })
+    }
 
     useEffect(() => {
         const fetchUserDetails = async () => {
@@ -37,13 +37,15 @@ const Dashboard = () => {
 
             setUserDetails({
                 username: data.username,
-                points: data.points
+                points: data.points,
+                goal: data.goal
             })
            
             return data
           }
 
           fetchUserDetails()
+
     
     }, [])
 
@@ -70,8 +72,8 @@ const Dashboard = () => {
             </form>
             </div>
             <div className="progress">
-                <ProgressBar percentage={percentage} />
-            </div>
+                <ProgressBar/>
+            </div> 
             <DashboardImages/>
         </div>
     )
