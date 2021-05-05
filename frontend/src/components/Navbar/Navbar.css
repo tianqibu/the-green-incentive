@@ -34,10 +34,7 @@
 .link-icon {
   height: 100%;
 }
-.user-icon {
-}
-.contact-icon {
-}
+
 .nav-menu {
   display: grid;
   grid-template-columns: repeat(6, auto);
@@ -117,12 +114,7 @@
     background-color: #dd9d36;
     border-radius: 0;
   }
-  /*.navbar-logo {
-        position: absolute;
-        top: 0;
-        left: 0;
-        transform: translate(25%, 50%);
-    }*/
+
   .menu-icon {
     display: block;
     position: absolute;
