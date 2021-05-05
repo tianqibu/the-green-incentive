@@ -120,7 +120,7 @@ def add_points(points):
 ####################### TAKE OFF POINTS #######################
 
 @login_required
-@main.route('/points/subtract/<points>')
+@main.route('/points/subtract/<int:points>')
 def subtract_points(points):
     '''Subtract points to user's total point balance''' 
 

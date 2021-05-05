@@ -9,10 +9,23 @@ const Dashboard = () => {
 
     const [ userDetails, setUserDetails ] = useState({
         username: '',
-        email: '',
-        id: '',
         points: ''
     })
+
+    const [percentage, setPercentage] = useState('')
+    const [goal, setGoal] = useState('')
+
+    const handleChange = (e) => {
+        setGoal(e)
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        const calc_percentage = userDetails.points/goal * 100
+        setPercentage(calc_percentage)
+    }
+
+    
 
     useEffect(() => {
         const fetchUserDetails = async () => {
@@ -34,8 +47,6 @@ const Dashboard = () => {
     
     }, [])
 
-    const [percentage, setPercentage] = useState(60)
-
     return (
         <div className="dashboard-container">
             <div className="title">
@@ -45,8 +56,20 @@ const Dashboard = () => {
                 <p className="bold">Points balance</p>
                 <p>{userDetails.points}</p>
             </div>
+        
+            <div className="set-goal">
+                <p className="bold">Goal progress</p>
+                <form onSubmit={handleSubmit}>
+                    <input
+                        type="number"
+                        name="number"
+                        placeholder="Enter number"
+                        onChange={(e) => handleChange(e.target.value)}
+                    />
+                    <input type="submit" value="Set goal" />
+            </form>
+            </div>
             <div className="progress">
-                <p className="bold">Daily goal progress</p>
                 <ProgressBar percentage={percentage} />
             </div>
             <DashboardImages/>

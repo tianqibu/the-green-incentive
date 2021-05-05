@@ -43,6 +43,19 @@ def get_activity_log():
 
     return jsonify(result)
 
+@login_required
+@activity.route('/log/join', methods=['GET'])
+def get_activity_log_join():
+    '''JOINS''' 
+    all_activities = ActivityLog.query\
+                        .join(Activity, ActivityLog.activity_id == Activity.id)\
+                        .add_columns(ActivityLog.activity_id, ActivityLog.date, ActivityLog.activity_description, ActivityLog.user_id, Activity.activity_name, ActivityLog.id, Activity.activity_points)\
+                        .filter(ActivityLog.user_id==current_user.id)
+
+    result = activities_log_schema.dump(all_activities)
+
+    return jsonify(result)
+
 ####################### ACTIVITIES #######################
 
 @activity.route('/', methods=['GET'])

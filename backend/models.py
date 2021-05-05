@@ -1,5 +1,6 @@
 from app.extensions import db
 from app.extensions import ma
+from marshmallow import fields
 from app.extensions import login
 
 from flask_login import UserMixin
@@ -48,18 +49,18 @@ class ActivityLog(db.Model):
     id = db.Column(db.Integer, unique=True, primary_key=True)
     date = db.Column(db.DateTime)
     activity_id = db.Column(db.Integer, db.ForeignKey('activity.id'))
-    activity = db.relationship(Activity)
+    activity = db.relationship('Activity')
     activity_description = db.Column(db.String(400))
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    user = db.relationship(User)
+    user = db.relationship('User')
 
 class RewardLog(db.Model):
     __tablename__ = 'reward-log'
     id = db.Column(db.Integer, primary_key=True)
     reward_id = db.Column(db.Integer, db.ForeignKey('reward.id'))
-    reward = db.relationship(Reward)
+    reward = db.relationship('Reward')
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    user = db.relationship(User)
+    user = db.relationship('User')
 
 class UserSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
@@ -77,9 +78,10 @@ class ActivityLogSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = ActivityLog
         include_fk = True
+        # activity = fields.Nested(ActivitySchema)
+
 
 class RewardLogSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = RewardLog
         include_fk = True
-    

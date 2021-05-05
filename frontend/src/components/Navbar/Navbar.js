@@ -35,6 +35,11 @@ const Navbar = () => {
             </Link>
           </li>
           <li className="nav-item">
+            <Link to="/dashboard" className="nav-links" onClick={closeMobileMenu}>
+              Dashboard
+            </Link>
+          </li>
+          <li className="nav-item">
             <Link to="/sign-in" className="nav-links" onClick={closeMobileMenu}>
               Sign In <FaRegUser className="fa-icons" id="user-icon" />
             </Link>
