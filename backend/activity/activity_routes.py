@@ -6,6 +6,7 @@ import datetime
 
 activity = Blueprint('activity', __name__)
 
+activity_schema = ActivitySchema()
 activities_schema = ActivitySchema(many=True)
 activity_log_schema = ActivityLogSchema()
 activities_log_schema = ActivityLogSchema(many=True)
@@ -50,3 +51,9 @@ def get_activities():
     all_activities = Activity.query.all()
     result = activities_schema.dump(all_activities)
     return jsonify(result)
+
+@activity.route('/<id>', methods=['GET'])
+def get_activity(id):
+    '''Gets selected activity'''
+    activity = Activity.query.get(id)
+    return activity_schema.jsonify(activity)

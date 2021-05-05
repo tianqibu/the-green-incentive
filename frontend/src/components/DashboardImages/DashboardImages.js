@@ -10,10 +10,10 @@ const DashboardImages = () => {
     return (
         <div>
             <div className="img-container">
-                <img src={LogActivityImage} alt='log activity'/>
-                <Link to="/rewards">
-                    <img src={RewardsImage} alt='rewards'/>
+                <Link to="/activity-log">
+                    <img src={LogActivityImage} alt='log activity'/>
                 </Link>
+                <img src={RewardsImage} alt='rewards'/>
             </div>
             <div className="large-img-container">
                 <Link to="/garden">

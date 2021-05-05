@@ -6,14 +6,14 @@ import SignIn from "./components/SignIn/SignIn.js";
 import SignUp from "./components/SignUp/SignUp.js";
 import Footer from "./components/Footer/Footer.js";
 
-
-import Home from "./pages/Home/Home";
-import Impact from "./pages/Impact/Impact";
-import Resources from "./pages/Resources/Resources";
-import Dashboard from "./pages/Dashboard/Dashboard";
-import Garden from "./pages/Garden/Garden";
-import ContactUs from "./pages/ContactUs/ContactUs";
-import Rewards from './pages/Rewards/Rewards'
+import Home from "./pages/Home/Home.js";
+import Impact from "./pages/Impact/Impact.js";
+import Resources from "./pages/Resources/Resources.js";
+import Dashboard from "./pages/Dashboard/Dashboard.js";
+import ActivityLog from "./pages/ActivityLog/ActivityLog.js"
+import Garden from "./pages/Garden/Garden.js";
+import ContactUs from "./pages/ContactUs/ContactUs.js";
+import Rewards from './pages/Rewards/Rewards.js'
 
 const App = () => {
 
@@ -27,6 +27,7 @@ const App = () => {
       <Route path="/resources" exact component={Resources} />
       <Route path="/contact-us" exact component={ContactUs} />
       <Route path="/dashboard" exact component={Dashboard} />
+      <Route path="/activity-log" exact component={ActivityLog} />
       <Route path="/garden" exact component={Garden} />
       <Route path="/rewards" exact component={Rewards} />
       <Footer />
