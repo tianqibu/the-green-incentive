@@ -16,6 +16,7 @@ def load_user(id):
 def login():
     '''Authenticates user'''
 
+    print(current_user)
     # print(current_user.is_authenticated)
     # if current_user.is_authenticated:
     #     return redirect(url_for('dashboard'))
@@ -35,8 +36,10 @@ def login():
         if user and user.check_password(password=form_password):
             print('Test')
             login_user(user)
+            flash('Successfully logged in.')
             return jsonify({'message': 'User is logged in'})
         else:  
+            flash('Login unsuccessful. Please check your email and password and try again.')
             return jsonify({'error': 'Login unsuccessful. Please check your email and password and try again.'})
 
 ####################### REGISTER #######################
@@ -45,9 +48,9 @@ def login():
 def register():
     '''Allows user to register'''
 
-    print(current_user)
+    # print(current_user.is_authenticated)
     # if current_user.is_authenticated:
-    #     return redirect(url_for('dashboard'))
+    #     return redirect('http://localhost:3000/dashboard')
     # else:
     #     return jsonify({ 'register': 'register page' })
 
@@ -56,9 +59,11 @@ def register():
     password = request.json['password'] 
 
     if User.query.filter(User.username == username).count():
+        flash('User already exists.')
         return jsonify({'error': 'User already exists'})
     
     if User.query.filter(User.email == email).count():
+        flash('Email already in use.')
         return jsonify({'error': 'Email has already been used'})
         
     new_user = User(username=username, email=email, points=0, trees_grown=0)
@@ -69,6 +74,7 @@ def register():
     db.session.add(new_user)
     db.session.commit()
 
+    flash('You have successfully registered.')
     return jsonify({'message': 'New user has been successfully registered'})
 
 ####################### LOGOUT #######################
@@ -77,6 +83,7 @@ def register():
 @main.route('/users/logout')
 def logout():
     logout_user()
+    flash('You have successfully logged out.')
     return 'Logged out'
     # return redirect(url_for('home'))
 
@@ -84,19 +91,44 @@ def logout():
 
 @login_required
 @main.route('/users/current')
-def current_user():
+def get_user_info():
     '''Returns JSON data with all information for the currently logged in user'''
+
     user = User.query.filter_by(username=current_user.username).first()
     return jsonify({ 
-        'user': user.username,
+        'id': user.id,
+        'username': user.username,
         'email': user.email,
-        'password': user.password,
+        'password': user.password_hash,
         'points': user.points,
         'trees_grown': user.trees_grown
     })
 
 ####################### ADD POINTS #######################
 
+@login_required
+@main.route('/points/add/<int:points>')
+def add_points(points):
+    '''Add points to user's total point balance''' 
+
+    user = User.query.filter_by(username=current_user.username).first()
+    user.points = user.points + points
+    db.session.commit()
+
+    return 'Points added'
+
+####################### TAKE OFF POINTS #######################
+
+@login_required
+@main.route('/points/subtract/<points>')
+def subtract_points(points):
+    '''Subtract points to user's total point balance''' 
+
+    user = User.query.filter_by(username=current_user.username).first()
+    user.points = user.points - points
+    db.session.commit()
+
+    return 'Points subtracted'
 
 ####################### GARDEN #######################
 

@@ -12,3 +12,5 @@ marshmallow-sqlalchemy==0.25.0
 six==1.15.0
 SQLAlchemy==1.4.12
 Werkzeug==1.0.1
+Flask-Cors==3.0.10
+alembic==1.6.0

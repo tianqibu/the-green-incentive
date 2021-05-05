@@ -15,18 +15,46 @@ const SignUp = () => {
 
     const [ errors, setErrors ] = useState({});
 
-        const handleChange = e => {
-            const { name, value } = e.target
-            setValues({
-                ...values, 
-                [name]: value
-            })
-        }
+    const handleChange = e => {
+        const { name, value } = e.target
+        setValues({
+            ...values, 
+            [name]: value
+        })
+    }
 
-    const handleSubmit = e => {
+    const handleSubmit = async e => {
         e.preventDefault()
-        console.log(values)
+        
         setErrors(validate(values))
+
+        if (Object.keys(errors).length === 0) {
+            const res = await fetch('/api/users/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    username: `${values.username}`,
+                    email: `${values.email}`,
+                    password: `${values.password}`,
+                })
+            })
+
+            const data = await res.json()
+            console.log(data)
+            console.log(data.error)
+
+            if (data.error) {
+                setErrors({
+                    general: data.error
+                })
+            }
+
+            if (res.status === 200 && !data.error) {
+                console.log(`${values.username} has signed up`)
+            } else {
+                console.log(`Error: Unable to sign ${values.username} up`)
+            }
+        }
     }
         
     return (
@@ -36,12 +64,12 @@ const SignUp = () => {
                 <form onSubmit={handleSubmit}>
                     <input 
                         type="text" 
-                        name="name" 
-                        placeholder="Name" 
-                        value={values.name}
+                        name="username" 
+                        placeholder="Username" 
+                        value={values.username}
                         onChange={handleChange}
                     />
-                    {errors.name && <p>{errors.name}</p>}
+                    {errors.username && <p>{errors.username}</p>}
                     <input 
                         type="email" 
                         name="email" 
@@ -66,6 +94,7 @@ const SignUp = () => {
                         onChange={handleChange}
                     />
                     {errors.password2 && <p>{errors.password2}</p>}
+                    {errors.general && <p>{errors.general}</p>}
                     <input 
                         type="submit" 
                         value="Create account" 
