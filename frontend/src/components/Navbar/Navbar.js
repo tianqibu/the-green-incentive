@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
-import logo from "../../images/logo.png";
+import logo from "../../images/navbar-logo.png";
 import logoIcon from "../../images/logo-icon.png";
 import { BsLink45Deg } from "react-icons/bs";
 import { FaRegUser, FaPhone, FaTimes, FaBars } from "react-icons/fa";
@@ -14,9 +14,7 @@ const Navbar = () => {
   return (
     <>
       <nav className="navbar">
-        <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
-          <img className="logo-image" src={logo} alt="Logo" />
-        </Link>
+        <img className="logo-image" src={logo} alt="Logo" />
         <div className="menu-icon" onClick={handleClick}>
           <span>{click ? <FaTimes /> : <FaBars />}</span>
         </div>

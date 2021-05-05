@@ -10,6 +10,7 @@ import Home from "./pages/Home/Home.js";
 import Impact from "./pages/Impact/Impact.js";
 import Resources from "./pages/Resources/Resources.js";
 import Dashboard from "./pages/Dashboard/Dashboard.js";
+import ActivityLog from "./pages/ActivityLog/ActivityLog.js"
 import Garden from "./pages/Garden/Garden.js";
 import ContactUs from "./pages/ContactUs/ContactUs.js";
 import RewardMain from './pages/Rewards/RewardMain'
@@ -45,6 +46,7 @@ const App = () => {
       <Route path="/resources" exact component={Resources} />
       <Route path="/contact-us" exact component={ContactUs} />
       <Route path="/dashboard" exact component={Dashboard} />
+      <Route path="/activity-log" exact component={ActivityLog} />
       <Route path="/garden" exact component={Garden} />
       <Route path='/RewardMain' exact component={RewardMain}/>
       <Route path='/RewardVouchers' exact component={RewardVouchers}/>

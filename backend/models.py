@@ -53,8 +53,8 @@ class ActivityLog(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     user = db.relationship(User)
 
-    def __init__(self):
-        self.date = datetime.datetime.now()
+    # def __init__(self):
+    #     self.date = datetime.datetime.now()
 
 class RewardLog(db.Model):
     __tablename__ = 'reward-log'

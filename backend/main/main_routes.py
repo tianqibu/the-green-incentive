@@ -90,7 +90,7 @@ def logout():
 
 @login_required
 @main.route('/users/current')
-def current_user():
+def currentuser():
     '''Returns JSON data with all information for the currently logged in user'''
     user = User.query.filter_by(username=current_user.username).first()
     return jsonify({ 
@@ -118,7 +118,7 @@ def add_points(points):
 
 @login_required
 @main.route('/points/subtract/<points>')
-def substract_points(points):
+def subtract_points(points):
     '''Subtract points to user's total point balance''' 
 
     user = User.query.filter_by(username=current_user.username).first()

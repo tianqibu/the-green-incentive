@@ -1,9 +1,8 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
 
-import Impact from '../images/impact.png'
+import Impact from '../../images/impact.png'
 
-import RewardVouchersTitle from '../components/RewardVouchers/RewardVouchersTitle.js'
+import RewardVouchersTitle from '../../components/RewardVouchers/RewardVouchersTitle.js'
 
 import './RewardMain.css'
 
