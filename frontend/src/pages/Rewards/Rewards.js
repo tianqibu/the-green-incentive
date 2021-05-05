@@ -12,11 +12,18 @@ const Rewards = () => {
 
     useEffect(() => {
         setRewards([])
+        fetchUserDetails()
     }, [])
+
+    const [ pointsBalance, setPointsBalance] = useState('')
 
     const [rewards, setRewards ] = useState([])
 
-    const handleClick = async (value) => {
+    const updateUIPoints = (value) => {
+        setPointsBalance(value)
+    }
+
+    const getRewards = async (value) => {
 
         const res = await fetch(`/api/rewards/${value}`, {
             method: 'GET'
@@ -27,38 +34,51 @@ const Rewards = () => {
         setRewards(data)
     }
 
+    const fetchUserDetails = async () => {
+        const res = await fetch('/api/users/current', {
+          method: 'GET',
+        })
+
+        const data = await res.json()
+
+        setPointsBalance(data.points)
+
+        return data
+    }
+
     return (
         <div className='rewards-container'>
             <div className='title-container'>
                 <h1>Rewards</h1>
                 <p>Redeem your points here!<br></br>Click a category to discover what rewards are currently available.</p>
             </div>
+            <p>Your current points balance: {pointsBalance}</p>
             <div className='img-parent-container'>
                 <div className="img-child">
-                    <button onClick={() => handleClick('Vouchers')}>
+                    <button onClick={() => getRewards('Vouchers')}>
                         <img src={VouchersImage} alt="Vouchers"></img>
                     </button>
                 </div>
                 <div className="img-child">
-                    <button onClick={() => handleClick('FoodAndPlants')}>
+                    <button onClick={() => getRewards('FoodAndPlants')}>
                         <img src={FoodImage} alt="Food"></img>
                     </button>
                 </div>
                 <div className="img-child">
-                    <button onClick={() => handleClick('EcoProducts')}>
+                    <button onClick={() => getRewards('EcoProducts')}>
                         <img src={EcoProducts} alt="Eco Products"></img>
                     </button>
                 </div>
                 <div className="img-child">
-                    <button onClick={() => handleClick('Activities')}>
+                    <button onClick={() => getRewards('Activities')}>
                         <img src={ActivitiesImage} alt="ActivitiesImage"></img>
                     </button>
                 </div>
             </div>
 
-            { rewards.length > 0 && 
-                (rewards.map(reward => (
-                    <RewardItem name={reward.reward_name} points={reward.reward_points} id={reward.id}/>
+            { rewards.length > 0 &&
+             (rewards.map(reward => (
+                    <RewardItem name={reward.reward_name} points={reward.reward_points} id={reward.id} pointsBalance={pointsBalance} updateUIPoints={updateUIPoints} />
                 ))) 
             }
 

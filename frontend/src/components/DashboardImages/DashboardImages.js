@@ -11,7 +11,9 @@ const DashboardImages = () => {
         <div>
             <div className="img-container">
                 <img src={LogActivityImage} alt='log activity'/>
-                <img src={RewardsImage} alt='rewards'/>
+                <Link to="/rewards">
+                    <img src={RewardsImage} alt='rewards'/>
+                </Link>
             </div>
             <div className="large-img-container">
                 <Link to="/garden">

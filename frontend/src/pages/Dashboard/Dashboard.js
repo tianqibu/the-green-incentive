@@ -24,8 +24,6 @@ const Dashboard = () => {
 
             setUserDetails({
                 username: data.username,
-                email: data.email,
-                id: data.id,
                 points: data.points
             })
            
@@ -41,7 +39,7 @@ const Dashboard = () => {
     return (
         <div className="dashboard-container">
             <div className="title">
-                <Title title="Hi, User"/>
+                <Title user={userDetails.username}/>
             </div>
             <div className="points">
                 <p className="bold">Points balance</p>

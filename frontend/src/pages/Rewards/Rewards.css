@@ -8,6 +8,7 @@
     padding-bottom: 20px;
     margin-top: 70px;
     border-radius: 15px;
+    margin-bottom: 40px;
 }
 
 .title-container h1 { 
@@ -63,7 +64,6 @@
     .img-child {
         width: 50%;
     }
-
 
 .rewards-container img {
     /* height: 80%; */

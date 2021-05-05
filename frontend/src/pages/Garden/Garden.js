@@ -20,7 +20,11 @@ const Garden = () => {
 
             setTreesPlanted(data.trees_grown)
 
+            console.log(data.trees_grown)
+
         }
+
+        fetchTrees()
     
     }, [])
 
@@ -28,13 +32,13 @@ const Garden = () => {
         <div className="garden-container">
             <img src={Title} alt="Trees grown thanks to you" className="title"></img>
             <div className="tree-container">
-                { treesPlanted.length > 0 && [...Array(treesPlanted)].map(
+                { treesPlanted > 0 && [...Array(treesPlanted)].map(
                     (value, index) => (
                         <img src={Tree} alt="Tree" className="tree" />
                     )
                 )}
             </div>
-            { treesPlanted.length > 0 
+            { treesPlanted > 0 
                 ? (<h1>{treesPlanted} trees 👏🏻</h1>)
                 : (<div>
                     <h3>You haven't planted any trees yet!<br></br>Head to rewards to redeem your points and plant a tree in your name, then check back here. </h3>

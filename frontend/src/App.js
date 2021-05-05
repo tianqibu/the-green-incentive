@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 
 import Navbar from "./components/Navbar/Navbar.js";
 import SignIn from "./components/SignIn/SignIn.js";
@@ -17,23 +17,6 @@ import Rewards from './pages/Rewards/Rewards'
 
 const App = () => {
 
-   useEffect(() => {
-
-      const fetchAllActivities = async () => {
-        const res = await fetch('/api/activities', {
-          method: 'GET',
-        })
-
-        const data = await res.json()
-        console.log(data)
-        console.log('test')
-        return data
-      }
-
-      fetchAllActivities()
-
-    }, [])
-
   return (
     <Router>
       <Navbar />
@@ -45,7 +28,7 @@ const App = () => {
       <Route path="/contact-us" exact component={ContactUs} />
       <Route path="/dashboard" exact component={Dashboard} />
       <Route path="/garden" exact component={Garden} />
-      <Route path='/rewards' exact component={Rewards}/>
+      <Route path="/rewards" exact component={Rewards} />
       <Footer />
     </Router>
   );
