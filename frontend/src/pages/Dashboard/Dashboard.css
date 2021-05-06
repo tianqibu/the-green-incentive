@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@800&display=swap');
+
 .dashboard-container {
     width: 75%;
     margin: auto;
@@ -5,7 +7,7 @@
 
 .dashboard-container p {
     text-align: center;
-    font-family: Courier;
+    font-family: Archivo, sans-serif;
     margin: 5px;
 }
 
@@ -19,10 +21,49 @@
 }
 
 .bold {
-    font-weight: 700;
+    font-weight: 800;
 }
 
 .title {
     text-align: center;
     margin: auto;
+}
+
+.dashboard-container input[type=submit] {
+    background-color: var(--red);
+    border: none;
+    border-radius: 5px;
+    color: var(--white);
+    font-size: 14px; 
+    transition: transform 0.2s ease;
+    width: 100px;
+    height: 100%;
+    padding: 5px;
+    margin-left: 5px;
+    font-family: Archivo, sans-serif;
+}
+
+.dashboard-container input {
+    padding: 5px;
+    border-radius: 5px;
+    width: 100px;
+    height: 100%;
+    outline: none;
+    border: solid 1px grey;
+    font-family: Archivo, sans-serif;
+    margin-top: 10px;
+}
+
+.set-goal {
+    margin: auto;
+    width: 24%;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+    
+.dashboard-container input[type=submit]:hover {
+    background-color: #F07F8A;
+    cursor: pointer;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px #435058ff;
 }

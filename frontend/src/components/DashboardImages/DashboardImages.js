@@ -13,7 +13,9 @@ const DashboardImages = () => {
                 <Link to="/activity-log">
                     <img src={LogActivityImage} alt='log activity'/>
                 </Link>
-                <img src={RewardsImage} alt='rewards'/>
+                <Link to="/rewards">
+                    <img src={RewardsImage} alt='rewards'/>
+                </Link>
             </div>
             <div className="large-img-container">
                 <Link to="/garden">

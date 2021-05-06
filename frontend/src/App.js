@@ -1,22 +1,20 @@
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import { useState, useEffect } from 'react'
 
 import Navbar from "./components/Navbar/Navbar.js";
 import SignIn from "./components/SignIn/SignIn.js";
 import SignUp from "./components/SignUp/SignUp.js";
-import Footer from "./components/Footer/Footer.js";
 
 import Home from "./pages/Home/Home.js";
 import Impact from "./pages/Impact/Impact.js";
 import Resources from "./pages/Resources/Resources.js";
 import Dashboard from "./pages/Dashboard/Dashboard.js";
-import ActivityLog from "./pages/ActivityLog/ActivityLog.js"
+import ActivityLog from "./pages/ActivityLog/ActivityLog.js";
 import Garden from "./pages/Garden/Garden.js";
 import ContactUs from "./pages/ContactUs/ContactUs.js";
-import Rewards from './pages/Rewards/Rewards.js'
+import Rewards from "./pages/Rewards/Rewards.js";
+import Footer from "./components/Footer/Footer.js";
 
 const App = () => {
-
   return (
     <Router>
       <Navbar />

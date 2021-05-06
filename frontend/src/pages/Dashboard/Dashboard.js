@@ -9,10 +9,23 @@ const Dashboard = () => {
 
     const [ userDetails, setUserDetails ] = useState({
         username: '',
-        email: '',
-        id: '',
-        points: ''
+        points: '',
+        goal: ''
     })
+
+    const handleChange = (e) => {
+        setUserDetails({ ...userDetails, goal: e })
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        const percentage = Math.round(userDetails.points/userDetails.goal * 100)
+        localStorage.setItem('percentage', percentage);
+
+        await fetch(`/api/goals/${userDetails.goal}`, {
+            method: 'GET',
+          })
+    }
 
     useEffect(() => {
         const fetchUserDetails = async () => {
@@ -24,17 +37,17 @@ const Dashboard = () => {
 
             setUserDetails({
                 username: data.username,
-                points: data.points
+                points: data.points,
+                goal: data.goal
             })
            
             return data
           }
 
           fetchUserDetails()
+
     
     }, [])
-
-    const [percentage, setPercentage] = useState(60)
 
     return (
         <div className="dashboard-container">
@@ -45,10 +58,22 @@ const Dashboard = () => {
                 <p className="bold">Points balance</p>
                 <p>{userDetails.points}</p>
             </div>
-            <div className="progress">
-                <p className="bold">Daily goal progress</p>
-                <ProgressBar percentage={percentage} />
+        
+            <div className="set-goal">
+                <p className="bold">Goal progress</p>
+                <form onSubmit={handleSubmit}>
+                    <input
+                        type="number"
+                        name="number"
+                        placeholder="Enter number"
+                        onChange={(e) => handleChange(e.target.value)}
+                    />
+                    <input type="submit" value="Set goal" />
+            </form>
             </div>
+            <div className="progress">
+                <ProgressBar/>
+            </div> 
             <DashboardImages/>
         </div>
     )
