@@ -41,7 +41,7 @@ const Dashboard = () => {
 
         if (userDetails.goal < userDetails.points) {
             setFlash({
-                message: `Error: Your new goal must be greater than your current points balance.`,
+                message: `Your goal must be greater than your current points balance.`,
                 severity:'error'
             })
         } else {
@@ -54,7 +54,7 @@ const Dashboard = () => {
 
         setUserDetails({ ...userDetails, percentage: percentage })
         setFlash({
-            message: `Success: Goal has been added.`,
+            message: `You have set a new goal!`,
             severity:'success'
         })
         }
@@ -116,7 +116,6 @@ const Dashboard = () => {
                     <p className="bold">Goal progress</p>
                 </div>
                 <div className="progress">
-                    {/* <p>Current goal: {userDetails.goal}</p> */}
                     <ProgressBar percentage={userDetails.percentage}/>
                     <div className="set-goal">
                         <form onSubmit={handleSubmit}>

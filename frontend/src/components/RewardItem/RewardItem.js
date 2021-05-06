@@ -1,39 +1,39 @@
 import './RewardItem.css'
 
 
-const RewardItem = ({name, points, id, pointsBalance, updateUIPoints, setFlash, displayFlashMessage }) => {
+const RewardItem = ({
+    name, points, id, pointsBalance, updateUIPoints, setFlash,displayFlashMessage 
+    }) => {
 
     const handleClick = async (reward_id) => {
+
+        const newBalance = pointsBalance - points
         
         if (pointsBalance < points) {
-            displayFlashMessage();
             setFlash({
-                message: `Error! You do not have enough points.`,
+                message: `Error: You do not have enough points.`,
                 severity:'error'
             })
         } else if (pointsBalance >= points && reward_id == 13 ) {
-            displayFlashMessage();
             setFlash({
-                message: `Success! A tree has been planted in your name. Check your garden.`,
+                message: `A tree has been planted in your name. Check your garden!`,
                 severity:'success'
             })
             addTree()
             addRewardLog(reward_id)
             updateAPIPoints() 
-            const newBalance = pointsBalance - points
             updateUIPoints(newBalance)
         } else {
-            console.log(reward_id)
-            displayFlashMessage();
             setFlash({
-                message:`Success! A voucher for ${name} has been sent to your email address.`,
+                message:`A voucher for ${name} has been sent to your email address.`,
                 severity:'success'
             })
             addRewardLog(reward_id)
             updateAPIPoints() 
-            const newBalance = pointsBalance - points
             updateUIPoints(newBalance)
         }
+
+        displayFlashMessage();
     }
 
     const addTree = async () => {
