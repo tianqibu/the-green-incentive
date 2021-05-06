@@ -45,6 +45,7 @@
     outline: none;
     border: solid 1px grey;
     font-family: Archivo, sans-serif;
+    text-align: center;
 }
 
 .center-container {
