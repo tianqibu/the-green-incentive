@@ -32,7 +32,6 @@ const Rewards = () => {
         setTimeout(() => {
         setShowFlash(false);
         }, 6000);
-        window.scrollTo(0, 0)
     }
 
     const updateUIPoints = (value) => {

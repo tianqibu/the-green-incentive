@@ -1,8 +1,7 @@
 import './Activities.css'
-
 import { useState, useEffect } from 'react'
 
-const Activities = () => {
+const Activities = ({ displayFlashMessage, setFlash }) => {
     const [activities, setActivities] = useState([])
     const [activity, setActivity] = useState([])
     const [activityDescription, setActivityDescription] = useState('')
@@ -47,9 +46,19 @@ const Activities = () => {
 
     const addActivity = async () => {
         if (activity <= 0) {
-            alert('Please select an activity.')
+            // alert('Please select an activity.')
+            displayFlashMessage();
+            setFlash({
+                message: `Error: Please select an activity.`,
+                severity:'error'
+            })
         } else if (activityDescription.length === 0) {
-            alert('Please input an activity description.')
+            // alert('Please input an activity description.')
+            displayFlashMessage();
+            setFlash({
+                message: `Error: Please input an activity description.`,
+                severity:'error'
+            })
         } else {
             const res = await fetch('/api/activities/log/add', {
                 method: 'POST',
@@ -58,9 +67,20 @@ const Activities = () => {
             })
             if (res.status === 200) {
                 window.location.reload()
-                alert('Activity logged.')
+                // alert('Activity logged.')
+                displayFlashMessage();
+                setFlash({
+                    message: `Activity logged.`,
+                    severity:'success'
+                })
+                
             } else {
                 alert('Unsuccessful.')
+                displayFlashMessage();
+                setFlash({
+                    message: `Error: Unsuccessful.`,
+                    severity:'error'
+                })
             }
         }
     }
