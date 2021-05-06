@@ -3,10 +3,11 @@ import { Link, useHistory } from "react-router-dom";
 import { useState } from "react";
 import Alert from '@material-ui/lab/Alert';
 import Fade from '@material-ui/core/Fade';
+import { createBrowserHistory } from 'history';
 
 const SignIn = () => {
 
-  let history = useHistory();
+  let history = createBrowserHistory({forceRefresh:true})
 
   const [values, setValues] = useState({
     username: "",
@@ -55,7 +56,11 @@ const SignIn = () => {
       localStorage.setItem('loggedIn', true)
       window.setTimeout(() => {
         history.push('/dashboard')
-      }, 5000)
+      }, 3000)
+      // window.setTimeout(() => {
+      //   history.go(0)
+      // }, 3000)
+      // history.go(0)
     } else {
       console.log(`Error: Unable to log ${values.username} in`);
     }

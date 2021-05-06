@@ -5,7 +5,7 @@ import logo from "../../images/navbar-logo.png";
 import logoIcon from "../../images/logo-icon.png";
 import { BsLink45Deg } from "react-icons/bs";
 import { FaRegUser, FaPhone, FaTimes, FaBars } from "react-icons/fa";
-import { FiLogOut } from "react-icons/fi";
+// import { FiLogOut } from "react-icons/fi";
 
 const Navbar = () => {
   const [click, setClick] = useState(false);
@@ -18,6 +18,7 @@ const Navbar = () => {
     await fetch("/api/users/logout", {
       method: "GET"})
     history.push('/sign-in')
+    history.go(0)
   }
 
 
@@ -33,15 +34,6 @@ const Navbar = () => {
             <Link to="/" className="nav-links" onClick={closeMobileMenu}>
               Home
               <img className="logo-icon" src={logoIcon} alt="Logo-icon" />
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link
-              to="/resources"
-              className="nav-links"
-              onClick={closeMobileMenu}
-            >
-              Resources <BsLink45Deg className="fa-icons" id="link-icon" />
             </Link>
           </li>
           {
