@@ -57,8 +57,9 @@
 }
 
 .nav-links:hover {
-    background-color: lemonchiffon;
-    border-radius: 4px;
+    <<<<<<< HEAD background-color: lemonchiffon;
+    =======background-color: #0ca789;
+    >>>>>>>6e550cacb3a6012f5a5ba0f6fefeafdbe2584489 border-radius: 4px;
     transition: all 0.2s ease-out;
 }
 
@@ -97,6 +98,7 @@
         left: -110%;
         opacity: 1;
         transition: all 0.5s ease;
+        margin-left: -2.5rem;
     }
     .nav-menu.active {
         background: rgb(255, 255, 255);
@@ -123,7 +125,7 @@
     .menu-icon {
         display: block;
         position: absolute;
-        top: 0;
+        top: 15px;
         right: 0;
         transform: translate(-100%, 60%);
         font-size: 1.8rem;
