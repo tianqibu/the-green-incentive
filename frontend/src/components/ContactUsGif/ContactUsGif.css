@@ -1,9 +1,16 @@
 .gif {
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 2.5rem;
-  display: block;
-  height: 650px;
-  width: 400px;
-  border-radius: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 55px;
+    display: block;
+    height: 650px;
+    width: 400px;
+    border-radius: 2rem;
+}
+
+@media screen and (max-width: 900px) {
+    .gif {
+        width: 300px;
+        height: auto;
+    }
 }

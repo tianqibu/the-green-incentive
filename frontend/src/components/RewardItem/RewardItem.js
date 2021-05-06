@@ -6,14 +6,12 @@ const RewardItem = ({name, points, id, pointsBalance, updateUIPoints, setFlash, 
     const handleClick = async (reward_id) => {
         
         if (pointsBalance < points) {
-            console.log('Total points: ', pointsBalance)
-            console.log('Points: ', points)
             displayFlashMessage();
             setFlash({
                 message: `Error! You do not have enough points.`,
                 severity:'error'
             })
-        } else if (pointsBalance >= points && reward_id === 13 ) {
+        } else if (pointsBalance >= points && reward_id == 13 ) {
             displayFlashMessage();
             setFlash({
                 message: `Success! A tree has been planted in your name. Check your garden.`,
@@ -24,18 +22,17 @@ const RewardItem = ({name, points, id, pointsBalance, updateUIPoints, setFlash, 
             updateAPIPoints() 
             const newBalance = pointsBalance - points
             updateUIPoints(newBalance)
-            console.log('Tree route')
         } else {
+            console.log(reward_id)
             displayFlashMessage();
             setFlash({
-                message:`Sucess! A voucher for ${name} has been sent to your email address.`,
+                message:`Success! A voucher for ${name} has been sent to your email address.`,
                 severity:'success'
             })
             addRewardLog(reward_id)
             updateAPIPoints() 
             const newBalance = pointsBalance - points
             updateUIPoints(newBalance)
-            console.log('Normal route')
         }
     }
 

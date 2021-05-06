@@ -1,16 +1,12 @@
-@media screen and (max-width: 1000px) {
-    .impact-container {
-        width: 100%;
-    }
-}
-
 .impact-container {
     text-align: center;
     color: var(--darkest-green);
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .impact-container h1 {
-    font-size: 3rem;
+    font-size: 60px;
 }
 
 .impact-container p {
@@ -26,4 +22,18 @@
     margin-right: 2rem;
     margin-top: 2rem;
     padding: 1rem;
+}
+
+@media screen and (max-width: 1000px) {
+    .impact-container {
+        width: 90%;
+    }
+    .impact-container h1 {
+        font-size: 40px;
+        margin: 10px;
+    }
+    .impact-container p {
+        font-size: 1rem;
+        margin: 0px;
+    }
 }

@@ -11,6 +11,12 @@
 h1 {
     font-family: 'Archivo Black', sans-serif;
     color: var(--darkest-green);
-    font-size: 3rem;
+    font-size: 60px;
     text-align: center;
+}
+
+@media screen and (max-width: 800px) {
+    h1 {
+        font-size: 45px;
+    }
 }

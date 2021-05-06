@@ -3,7 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 import "./Navbar.css";
 import logo from "../../images/navbar-logo.png";
 import logoIcon from "../../images/logo-icon.png";
-import { BsLink45Deg } from "react-icons/bs";
+import { MdDashboard, MdExitToApp } from "react-icons/md";
 import { FaRegUser, FaPhone, FaTimes, FaBars } from "react-icons/fa";
 // import { FiLogOut } from "react-icons/fi";
 
@@ -46,7 +46,7 @@ const Navbar = () => {
                   className="nav-links" 
                   onClick={closeMobileMenu}
                 >
-                   Dashboard
+                   Dashboard <MdDashboard className="md-icon" id="dash" />
                 </Link>
               </li>
               <li className="nav-item">
@@ -55,7 +55,7 @@ const Navbar = () => {
                   className="nav-links" 
                   onClick={()=> { logOut(); closeMobileMenu()}}
                 >
-                   Log Out
+                   Log Out <MdExitToApp className="md-icon" id="exit" />
                 </Link>
               </li>
             </>

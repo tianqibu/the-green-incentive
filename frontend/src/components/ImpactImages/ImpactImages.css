@@ -7,6 +7,17 @@
 .impact-grid img {
     width: 90%;
     height: auto;
-    padding: 1rem;
+    /* padding: 1rem; */
     border-radius: 50px;
+    margin: auto;
+    margin: 0.2rem;
+}
+
+@media screen and (max-width: 1000px) {
+    .impact-container {
+        width: 95%;
+    }
+    .impact-grid img {
+        border-radius: 15px;
+    }
 }

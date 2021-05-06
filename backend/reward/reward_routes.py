@@ -6,7 +6,7 @@ from models import RewardLog, RewardLogSchema, Reward, RewardSchema
 reward = Blueprint('reward', __name__)
 
 reward_log_schema = RewardLogSchema()
-rewards_log_schema = RewardLogSchema(many=True)
+rds_log_schema = RewardLogSchema(many=True)
 
 reward_schema = RewardSchema()
 rewards_schema = RewardSchema(many=True)

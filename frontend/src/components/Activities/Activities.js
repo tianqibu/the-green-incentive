@@ -1,12 +1,12 @@
 import './Activities.css'
 import { useState, useEffect } from 'react'
-import ActivityLog from '../../pages/ActivityLog/ActivityLog'
 
 const Activities = ({ displayFlashMessage, setFlash, setActivityLog, activityLog }) => {
     const [activities, setActivities] = useState([])
     const [activity, setActivity] = useState([])
     const [activityDescription, setActivityDescription] = useState('')
     const [pointsBalance, setPointsBalance] = useState('')
+    const [selected, setSelected] = useState('')
 
     let logActivity = {
         'activity_id': activity.id,
@@ -36,6 +36,7 @@ const Activities = ({ displayFlashMessage, setFlash, setActivityLog, activityLog
         }
 
         getActivity()
+        setSelected(e.target.value)
     }
 
     const handleDescChange = (e) => {
@@ -45,9 +46,12 @@ const Activities = ({ displayFlashMessage, setFlash, setActivityLog, activityLog
     const handleSubmit = (e) => {
         e.preventDefault()
         addActivity()
+        setActivity([])
+        setActivityDescription([])
         updateAPIPoints()
         const newBalance = pointsBalance - (activity.activity_points)
         updateUIPoints(newBalance)
+        setSelected('')
     }
 
     const addActivity = async () => {
@@ -127,7 +131,7 @@ const Activities = ({ displayFlashMessage, setFlash, setActivityLog, activityLog
             <form>
                 <div className='select'>
                     <label>Select an activity: </label>
-                    <select onChange={handleChange}>
+                    <select onChange={handleChange} value={selected}>
                         <option value='-1'>Select an activity:</option>
                         {activities.map(activity => (
                             <option key={activity.id} value={activity.id}>{activity.activity_name}</option>

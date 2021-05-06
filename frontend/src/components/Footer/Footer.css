@@ -1,74 +1,73 @@
 @import url("https://fonts.googleapis.com/css2?family=Archivo:wght@200;400&display=swap");
-
 :root {
-  --footer-height: 160px;
+    --footer-height: 160px;
 }
 
 html {
-  position: relative;
-  min-height: 100%;
-  padding-bottom: 200px;
+    position: relative;
+    min-height: 100%;
+    padding-bottom: 180px;
 }
 
 .footer-container {
-  height: var(--footer-height);
-  background-color: var(--medium-green);
-  width: 100%;
-  display: flex;
-  bottom: 0;
-  /* margin-top: 50px; */
-  position: absolute;
+    height: var(--footer-height);
+    background-color: var(--medium-green);
+    width: 100%;
+    display: flex;
+    bottom: 0;
+    position: absolute;
 }
 
 .child {
-  width: 33%;
+    width: 33%;
 }
 
 .footer-container p {
-  color: white;
-  text-align: center;
-  margin-top: -1px;
-  font-family: "Archivo Black", sans-serif;
+    color: white;
+    text-align: center;
+    margin-top: -1px;
+    font-family: "Archivo Black", sans-serif;
 }
 
 .footer-container img {
-  width: 100px;
-  margin-top: 30px;
-  float: right;
-  margin-right: 5px;
-  background-color: rgba(244, 236, 224, 0.9);
-  border-radius: 50%;
+    width: 100px;
+    margin-top: 30px;
+    float: right;
+    margin-right: 5px;
+    background-color: rgba(244, 236, 224, 0.9);
+    border-radius: 50%;
 }
 
 .footer-container li {
-  list-style-type: none;
-  color: white;
-  margin: 7px;
-  font-family: "Archivo", sans-serif;
-  font-weight: 400;
+    list-style-type: none;
+    color: white;
+    margin: 7px;
+    font-family: "Archivo", sans-serif;
+    font-weight: 400;
 }
 
 .links-container {
-  padding-top: 30px;
+    padding-top: 30px;
 }
 
 .media-icons {
-  margin: auto;
-  text-align: center;
-  margin-top: 30px;
+    margin: auto;
+    text-align: center;
+    margin-top: 30px;
 }
 
 @media screen and (max-width: 800px) {
-  .center {
-    width: 60%;
-  }
-
-  .right,
-  .left {
-    width: 20%;
-  }
-
-  .links-container {
-    padding-top: 15px;
-  }
+    .center {
+        width: 60%;
+    }
+    .right,
+    .left {
+        width: 20%;
+    }
+    .links-container {
+        padding-top: 15px;
+    }
+    .right img {
+        display: none;
+    }
 }

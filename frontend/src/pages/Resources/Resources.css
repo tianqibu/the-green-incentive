@@ -1,16 +1,12 @@
-@media screen and (max-width: 1000px) {
-    .resources-container {
-        width: 100%;
-    }
-}
-
 .resources-container {
     text-align: center;
     color: var(--darkest-green);
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .resources-container h1 {
-    font-size: 3rem;
+    font-size: 60px;
 }
 
 .ecosia-logo {
@@ -29,4 +25,13 @@
     margin-top: 2rem;
     padding-top: 0.1rem;
     padding-bottom: 1.5rem;
+}
+
+@media screen and (max-width: 1000px) {
+    .resources-container {
+        width: 90%;
+    }
+    .resources-container h1 {
+        font-size: 41px;
+    }
 }

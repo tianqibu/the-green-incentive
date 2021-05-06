@@ -1,22 +1,25 @@
-@media screen and (max-width: 1000px) {
-    .activity-container {
-        width: 100%;
-    }
-}
-
 .activity-container {
     text-align: center;
     color: var(--darkest-green);
     background-color: lemonchiffon;
     border-radius: 2rem;
-    margin-left: 2rem;
-    margin-right: 2rem;
+    margin-left: auto;
+    margin-right: auto;
     margin-top: 5rem;
     padding-top: 1rem;
     padding-bottom: 2rem;
-    width: 92%;
+    width: 85%;
 }
 
 .activity-container h1 {
-    font-size: 3rem;
+    font-size: 60px;
+}
+
+@media screen and (max-width: 1000px) {
+    .activity-container {
+        width: 90%;
+    }
+    .activity-container h1 {
+        font-size: 41px;
+    }
 }

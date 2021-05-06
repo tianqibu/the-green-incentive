@@ -23,7 +23,7 @@
     margin: auto;
     height: 650px;
     width: 400px;
-    margin-top: 50px;
+    margin-top: 55px;
     border-radius: 30px;
     border: solid 1.5px lightgrey;
 }
@@ -38,16 +38,16 @@
     border-radius: 5px;
     border: solid 1.5px lightgrey;
     outline: none;
-    background-color: white; /* having trouble seeing this */
+    background-color: white;
+    /* having trouble seeing this */
 }
-
 
 .sign-in-container input[type=submit] {
     background-color: var(--red);
     border: none;
     border-radius: 5px;
     color: var(--white);
-    font-size: 17px; 
+    font-size: 17px;
     transition: transform 0.2s ease;
 }
 
@@ -72,13 +72,11 @@
 
 @media screen and (max-width: 800px) {
     .sign-in-container {
-         width: 295px;
+        width: 295px;
         height: 480px;
     }
-
     .sign-in-container h1 {
         padding-top: 90px;
         font-size: 30px;
     }
-    
 }

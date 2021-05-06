@@ -16,42 +16,25 @@ activities_log_schema = ActivityLogSchema(many=True)
 @login_required
 @activity.route('/log/add', methods=['POST'])
 def add_activity_log_entry():
-    '''Logs an activity the user has added for points'''
+    '''Allows the user to add an activity to the log for points'''
 
     req_data = request.get_json()
     activity_id = req_data['activity_id']
-    print(activity_id)
     activity_description = req_data['activity_description']
-    print(activity_description)
     user_id = current_user.id
-    print(user_id)
     date = datetime.datetime.now()
-    print(date)
 
     new_activity_log_entry = ActivityLog(date=date, activity_id=activity_id, activity_description=activity_description, user_id=user_id)
     db.session.add(new_activity_log_entry)
     db.session.commit()
 
-    return jsonify({'message': 'activity has been logged'})
+    return jsonify({'message': 'Activity has been logged'})
 
 @login_required
 @activity.route('/log', methods=['GET'])
 def get_activity_log():
     '''Gets all the activities the user has logged for points'''
     all_activities = ActivityLog.query.filter_by(user_id=current_user.id)
-    result = activities_log_schema.dump(all_activities)
-
-    return jsonify(result)
-
-@login_required
-@activity.route('/log/join', methods=['GET'])
-def get_activity_log_join():
-    '''JOINS''' 
-    all_activities = ActivityLog.query\
-                        .join(Activity, ActivityLog.activity_id == Activity.id)\
-                        .add_columns(ActivityLog.activity_id, ActivityLog.date, ActivityLog.activity_description, ActivityLog.user_id, Activity.activity_name, ActivityLog.id, Activity.activity_points)\
-                        .filter(ActivityLog.user_id==current_user.id)
-
     result = activities_log_schema.dump(all_activities)
 
     return jsonify(result)

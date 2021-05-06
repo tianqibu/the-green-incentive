@@ -40,9 +40,11 @@ const SignUp = () => {
 
     const handleSubmit = async e => {
         e.preventDefault()
+        
         setErrors(validate(values))
 
-        if (Object.keys(errors).length === 0) {
+        if (Object.keys(validate(values)).length === 0) {
+            console.log('Making request to API')
             const res = await fetch('/api/users/register', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -50,8 +52,8 @@ const SignUp = () => {
                     username: `${values.username}`,
                     email: `${values.email}`,
                     password: `${values.password}`,
-                })
             })
+        })
 
             const data = await res.json()
         

@@ -12,6 +12,7 @@
 .logo-image {
     height: auto;
     width: 180px;
+    padding-left: 10px;
 }
 
 .logo-icon {
@@ -29,8 +30,17 @@
     color: #387c89;
 }
 
-.link-icon {
-    height: 100%;
+.md-icon {
+    color: #387c89;
+    font-size: larger;
+}
+
+#exit {
+    margin-bottom: -3px;
+}
+
+#dash {
+    margin-bottom: -3px;
 }
 
 .nav-menu {
@@ -74,14 +84,14 @@
 }
 
 
-/* Don't display mobile view isons in desktop*/
+/* Don't display mobile view icons in desktop */
 
 .menu-icon {
     display: none;
 }
 
 
-/* Mobile view*/
+/* Mobile view */
 
 @media screen and (max-width: 960px) {
     .NavbarItems {

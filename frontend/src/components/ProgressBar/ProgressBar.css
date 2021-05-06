@@ -8,7 +8,7 @@
 }
 
 .progress-bar {
-    position: relative; 
+    position: relative;
     height: 20px;
     width: 350px;
     border-radius: 50px;
@@ -23,5 +23,11 @@
     border-radius: 50px;
     transition: width .2s ease-in;
     text-align: center;
-    font-family:'Courier New', Courier, monospace;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+@media screen and (max-width: 800px) {
+    .progress-bar {
+        width: 200px;
+    }
 }

@@ -1,7 +1,7 @@
 import ActivityName from './ActivityName.js'
 import ActivityPoints from './ActivityPoints.js'
 import './Activities.css'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
 const ViewLog = ({ activityLog }) => {
     const [toggle, setToggle] = useState(false)
@@ -31,7 +31,9 @@ const ViewLog = ({ activityLog }) => {
                             </tr>
                         ))}
                     </tbody>
-                </table> : toggle && <p>You have no activities in your log.</p>}
+                </table> 
+                : toggle && <p>You have no activities in your log.</p>
+                }
         </div>
     )
 }

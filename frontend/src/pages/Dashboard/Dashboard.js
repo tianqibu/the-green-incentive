@@ -40,7 +40,6 @@ const Dashboard = () => {
         e.preventDefault()
 
         if (userDetails.goal < userDetails.points) {
-            displayFlashMessage();
             setFlash({
                 message: `Error: Your new goal must be greater than your current points balance.`,
                 severity:'error'
@@ -53,8 +52,14 @@ const Dashboard = () => {
             method: 'GET',
           })
 
-          setUserDetails({ ...userDetails, percentage: percentage })
+        setUserDetails({ ...userDetails, percentage: percentage })
+        setFlash({
+            message: `Success: Goal has been added.`,
+            severity:'success'
+        })
         }
+
+        displayFlashMessage();
     }
 
     useEffect(() => {

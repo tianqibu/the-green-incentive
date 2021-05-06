@@ -1,5 +1,5 @@
 import "./SignIn.css";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import Alert from '@material-ui/lab/Alert';
 import Fade from '@material-ui/core/Fade';
@@ -57,13 +57,11 @@ const SignIn = () => {
       window.setTimeout(() => {
         history.push('/dashboard')
       }, 3000)
-      // window.setTimeout(() => {
-      //   history.go(0)
-      // }, 3000)
+    
     } else {
       displayFlashMessage();
       setFlash({
-          message: `Error: Unable to log ${values.username} in`,
+          message: `Error: Unable to log in due to invalid username or password. Please try again.`,
           severity:'error'
         })
     }

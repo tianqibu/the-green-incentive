@@ -25,7 +25,8 @@ export default function validate (values) {
     } else if (values.password2 !== values.password) {
         errors.password2 = 'Passwords do not match'
     }
-
+    console.log(errors)
+    console.log(Object.keys(errors).length)
     return errors
 }
 

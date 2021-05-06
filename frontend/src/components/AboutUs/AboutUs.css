@@ -1,10 +1,9 @@
-
 .about-us button {
     background-color: var(--red);
     border: none;
     border-radius: 5px;
     color: white;
-    font-size: 17px; 
+    font-size: 17px;
     transition: transform 0.2s ease;
     width: 20%;
     padding: 7px;
@@ -23,11 +22,11 @@
 .about-us h1 {
     color: var(--darkest-green);
     font-family: 'Archivo Black', sans-serif;
-    font-size: 41px;
+    font-size: 60px;
     text-align: center;
     padding-top: 30px;
     padding-bottom: 10px;
-    width: 70%;
+    width: 80%;
     margin: auto;
     word-wrap: break-word;
 }
@@ -54,11 +53,9 @@
         font-size: 17px;
         width: 80%;
     }
-
     .about-us h1 {
         font-size: 35px;
     }
-
     .about-us button {
         width: 30%;
     }

@@ -16,23 +16,16 @@ def load_user(id):
 def login():
     '''Authenticates user'''
 
-    print(current_user)
-
     if request.method == 'POST':
         form_username = request.json['username']
         form_password = request.json['password'] 
 
         user = User.query.filter_by(username=form_username).first()
-    
-        print(user.check_password(password=form_password))
 
         if user and user.check_password(password=form_password):
-            print('Test')
             login_user(user)
-            flash('Successfully logged in.')
             return jsonify({'message': 'User is logged in'})
         else:  
-            flash('Login unsuccessful. Please check your email and password and try again.')
             return jsonify({'error': 'Login unsuccessful. Please check your email and password and try again.'})
 
 ####################### REGISTER #######################
@@ -46,22 +39,17 @@ def register():
     password = request.json['password'] 
 
     if User.query.filter(User.username == username).count():
-        flash('User already exists.')
         return jsonify({'error': 'User already exists'})
     
     if User.query.filter(User.email == email).count():
-        flash('Email already in use.')
         return jsonify({'error': 'Email has already been used'})
         
-    new_user = User(username=username, email=email, points=0, trees_grown=0, goal=0)
+    new_user = User(username=username, email=email, points=0, trees_grown=0,    goal=0)
     new_user.set_password(password)
-
-    print('User added')
 
     db.session.add(new_user)
     db.session.commit()
 
-    flash('You have successfully registered.')
     return jsonify({'message': 'New user has been successfully registered'})
 
 ####################### LOGOUT #######################
@@ -70,9 +58,7 @@ def register():
 @main.route('/users/logout')
 def logout():
     logout_user()
-    flash('You have successfully logged out.')
-    return 'Logged out'
-    # return redirect(url_for('home'))
+    return jsonify({'message': 'User has been logged out'})
 
 ####################### GET CURRENT USER INFORMATION #######################
 
@@ -103,7 +89,7 @@ def add_points(points):
     user.points = user.points + points
     db.session.commit()
 
-    return 'Points added'
+    return jsonify({'message': 'Points added'})
 
 ####################### TAKE OFF POINTS #######################
 
@@ -116,7 +102,7 @@ def subtract_points(points):
     user.points = user.points - points
     db.session.commit()
 
-    return 'Points subtracted'
+    return jsonify({'message': 'Points substracted'})
 
 ####################### GARDEN #######################
 
@@ -136,4 +122,4 @@ def add_goal(points):
     user = User.query.filter_by(username=current_user.username).first()
     user.goal = points
     db.session.commit()
-    return 'Goal added'
+    return jsonify({'message': 'Goal added'})
