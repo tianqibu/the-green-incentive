@@ -6,6 +6,7 @@ const Activities = ({ displayFlashMessage, setFlash, setActivityLog, activityLog
     const [activities, setActivities] = useState([])
     const [activity, setActivity] = useState([])
     const [activityDescription, setActivityDescription] = useState('')
+    const [pointsBalance, setPointsBalance] = useState('')
 
     let logActivity = {
         'activity_id': activity.id,
@@ -22,7 +23,7 @@ const Activities = ({ displayFlashMessage, setFlash, setActivityLog, activityLog
         }
 
         getActivities()
-
+        fetchUserPoints()
     }, [])
 
     const handleChange = (e) => {
@@ -44,6 +45,9 @@ const Activities = ({ displayFlashMessage, setFlash, setActivityLog, activityLog
     const handleSubmit = (e) => {
         e.preventDefault()
         addActivity()
+        updateAPIPoints()
+        const newBalance = pointsBalance - (activity.activity_points)
+        updateUIPoints(newBalance)
     }
 
     const addActivity = async () => {
@@ -96,6 +100,26 @@ const Activities = ({ displayFlashMessage, setFlash, setActivityLog, activityLog
                 })
             }
         }
+    }
+
+    const fetchUserPoints = async () => {
+        const res = await fetch('/api/users/current', {
+          method: 'GET',
+        })
+
+        const data = await res.json()
+
+        setPointsBalance(data.points)
+    }
+
+    const updateAPIPoints = async () => {
+        await fetch(`/api/points/add/${activity.activity_points}`, {
+            method: 'GET'
+        })
+    }
+
+    const updateUIPoints = async (value) => {
+        setPointsBalance(value)
     }
 
     return (
