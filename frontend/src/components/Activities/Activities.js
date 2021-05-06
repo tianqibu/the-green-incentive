@@ -5,6 +5,7 @@ const Activities = ({ displayFlashMessage, setFlash }) => {
     const [activities, setActivities] = useState([])
     const [activity, setActivity] = useState([])
     const [activityDescription, setActivityDescription] = useState('')
+    const [pointsBalance, setPointsBalance] = useState('')
 
     const logActivity = {
         'activity_id': activity.id,
@@ -21,6 +22,7 @@ const Activities = ({ displayFlashMessage, setFlash }) => {
         }
   
         getActivities()
+        fetchUserPoints()
     }, [])
 
     const handleChange = (e) => {
@@ -42,18 +44,19 @@ const Activities = ({ displayFlashMessage, setFlash }) => {
     const handleSubmit = (e) => {
         e.preventDefault()
         addActivity()
+        updateAPIPoints()
+        const newBalance = pointsBalance - (activity.activity_points)
+        updateUIPoints(newBalance)
     }
 
     const addActivity = async () => {
         if (activity <= 0) {
-            // alert('Please select an activity.')
             displayFlashMessage();
             setFlash({
                 message: `Error: Please select an activity.`,
                 severity:'error'
             })
         } else if (activityDescription.length === 0) {
-            // alert('Please input an activity description.')
             displayFlashMessage();
             setFlash({
                 message: `Error: Please input an activity description.`,
@@ -67,7 +70,6 @@ const Activities = ({ displayFlashMessage, setFlash }) => {
             })
             if (res.status === 200) {
                 window.location.reload()
-                // alert('Activity logged.')
                 displayFlashMessage();
                 setFlash({
                     message: `Activity logged.`,
@@ -83,6 +85,26 @@ const Activities = ({ displayFlashMessage, setFlash }) => {
                 })
             }
         }
+    }
+
+    const fetchUserPoints = async () => {
+        const res = await fetch('/api/users/current', {
+          method: 'GET',
+        })
+
+        const data = await res.json()
+
+        setPointsBalance(data.points)
+    }
+
+    const updateAPIPoints = async () => {
+        await fetch(`/api/points/add/${activity.activity_points}`, {
+            method: 'GET'
+        })
+    }
+
+    const updateUIPoints = async (value) => {
+        setPointsBalance(value)
     }
 
     return (
