@@ -1,13 +1,14 @@
 import './Activities.css'
 import { useState, useEffect } from 'react'
+import ActivityLog from '../../pages/ActivityLog/ActivityLog'
 
-const Activities = ({ displayFlashMessage, setFlash }) => {
+const Activities = ({ displayFlashMessage, setFlash, setActivityLog, activityLog }) => {
     const [activities, setActivities] = useState([])
     const [activity, setActivity] = useState([])
     const [activityDescription, setActivityDescription] = useState('')
     const [pointsBalance, setPointsBalance] = useState('')
 
-    const logActivity = {
+    let logActivity = {
         'activity_id': activity.id,
         'activity_description': activityDescription
     }
@@ -20,7 +21,7 @@ const Activities = ({ displayFlashMessage, setFlash }) => {
             const data = await res.json()
             setActivities(data)
         }
-  
+
         getActivities()
         fetchUserPoints()
     }, [])
@@ -69,7 +70,20 @@ const Activities = ({ displayFlashMessage, setFlash }) => {
                 body: JSON.stringify(logActivity),
             })
             if (res.status === 200) {
-                window.location.reload()
+
+                // Show logged activity in UI
+        
+                var today = new Date();
+                var date = today.getFullYear()+'-'+(((today.getMonth()+1) < 10) ?"0":"")+(today.getMonth()+1)+'-'+(((today.getDate()) < 10) ?"0":"")+today.getDate();
+
+                logActivity = {
+                    ...logActivity, 
+                    date: date
+                }
+
+                setActivityLog([...activityLog, logActivity])
+
+                // Display success message
                 displayFlashMessage();
                 setFlash({
                     message: `Activity logged.`,
@@ -77,7 +91,8 @@ const Activities = ({ displayFlashMessage, setFlash }) => {
                 })
                 
             } else {
-                alert('Unsuccessful.')
+
+                // Display error message
                 displayFlashMessage();
                 setFlash({
                     message: `Error: Unsuccessful.`,
