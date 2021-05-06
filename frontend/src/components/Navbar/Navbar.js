@@ -1,22 +1,30 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "./Navbar.css";
-import logo from "../../images/logo.png";
+import logo from "../../images/navbar-logo.png";
 import logoIcon from "../../images/logo-icon.png";
 import { BsLink45Deg } from "react-icons/bs";
 import { FaRegUser, FaPhone, FaTimes, FaBars } from "react-icons/fa";
+import { FiLogOut } from "react-icons/fi";
 
 const Navbar = () => {
   const [click, setClick] = useState(false);
-
-  const handleClick = () => setClick(!click); //enables toggle
+  const handleClick = () => setClick(!click); 
   const closeMobileMenu = () => setClick(false);
+  let history = useHistory();
+
+  const logOut = async () => {
+    localStorage.clear();
+    await fetch("/api/users/logout", {
+      method: "GET"})
+    history.push('/sign-in')
+  }
+
+
   return (
     <>
       <nav className="navbar">
-        <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
-          <img className="logo-image" src={logo} alt="Logo" />
-        </Link>
+        <img className="logo-image" src={logo} alt="Logo" />
         <div className="menu-icon" onClick={handleClick}>
           <span>{click ? <FaTimes /> : <FaBars />}</span>
         </div>
@@ -36,11 +44,38 @@ const Navbar = () => {
               Resources <BsLink45Deg className="fa-icons" id="link-icon" />
             </Link>
           </li>
-          <li className="nav-item">
-            <Link to="/sign-in" className="nav-links" onClick={closeMobileMenu}>
-              Sign In <FaRegUser className="fa-icons" id="user-icon" />
-            </Link>
-          </li>
+          {
+            localStorage.getItem('loggedIn') 
+            ? 
+            <>
+              <li className="nav-item">
+                <Link 
+                  to="/dashboard" 
+                  className="nav-links" 
+                  onClick={closeMobileMenu}
+                >
+                   Dashboard
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link 
+                  to="/" 
+                  className="nav-links" 
+                  onClick={()=> { logOut(); closeMobileMenu()}}
+                >
+                   Log Out
+                </Link>
+              </li>
+            </>
+            : 
+            <>
+              <li className="nav-item">
+                <Link to="/sign-in" className="nav-links" onClick={closeMobileMenu}>
+                    Sign In <FaRegUser className="fa-icons" id="user-icon" />
+                </Link>
+              </li>
+            </>
+          }
           <li className="nav-item">
             <Link
               to="/contact-us"

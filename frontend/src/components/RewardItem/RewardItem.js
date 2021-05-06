@@ -1,39 +1,49 @@
 import './RewardItem.css'
 
-const RewardItem = ({name, points, id}) => {
+const RewardItem = ({name, points, id, pointsBalance, updateUIPoints }) => {
 
-    const handleClick = async value => {
-        console.log(value)
-
-        // getUserPoints()
-
-        // Check if user's points are enough to redeem reward
-        // Success message to say voucher for reward has been sent to email
-
-        // If user's points are not enough to redeem reward
-        // Error message
+    const handleClick = async (reward_id) => {
         
-        addRewardLog(value)
+        if (pointsBalance < points) {
+            console.log('Total points: ', pointsBalance)
+            console.log('Points: ', points)
+            alert('Error! You do not have enough points.')
+        } else if (pointsBalance >= points && reward_id === 13 ) {
+            alert('Sucess! A tree has been planted in your name. Check your garden.')
+            addTree()
+            addRewardLog(reward_id)
+            updateAPIPoints() 
+            const newBalance = pointsBalance - points
+            updateUIPoints(newBalance)
+            console.log('Tree route')
+        } else {
+            alert('Sucess! The voucher has been sent to your email address.')
+            addRewardLog(reward_id)
+            updateAPIPoints() 
+            const newBalance = pointsBalance - points
+            updateUIPoints(newBalance)
+            console.log('Normal route')
+        }
     }
 
-    // Get user points
-    // const getUserPoints = async () => {
-    //     const res = await fetch('/api//users/current', {
-    //         method: 'GET'
-    //     })
+    const addTree = async () => {
+        await fetch('/api/trees/add', {
+            method: 'GET'
+    })}    
 
-    //     const data = res.json() 
-    //     const points = data.points
-    // }     
-
-    const addRewardLog = async(id) => {
+    const addRewardLog = async(reward_id) => {
         await fetch('/api/rewards/log/add', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                reward_id: `${id}`,
-                user_id: 'user_id',
+                reward_id: `${reward_id}`
             })
+        })
+    }
+
+    const updateAPIPoints = async () => {
+        await fetch(`/api/points/subtract/${points}`, {
+            method: 'GET'
         })
     }
 
