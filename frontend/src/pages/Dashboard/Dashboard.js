@@ -111,7 +111,7 @@ const Dashboard = () => {
                     <p className="bold">Goal progress</p>
                 </div>
                 <div className="progress">
-                    <p>Current goal: {userDetails.goal}</p>
+                    {/* <p>Current goal: {userDetails.goal}</p> */}
                     <ProgressBar percentage={userDetails.percentage}/>
                     <div className="set-goal">
                         <form onSubmit={handleSubmit}>
@@ -119,7 +119,7 @@ const Dashboard = () => {
                                 <input
                                     type="number"
                                     name="number"
-                                    placeholder="Enter number"
+                                    placeholder={userDetails.goal}
                                     onChange={(e) => handleChange(e.target.value)}
                                 />
                                 <input type="submit" value="Set goal" />
