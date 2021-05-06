@@ -57,9 +57,8 @@
 }
 
 .nav-links:hover {
-    <<<<<<< HEAD background-color: lemonchiffon;
-    =======background-color: #0ca789;
-    >>>>>>>6e550cacb3a6012f5a5ba0f6fefeafdbe2584489 border-radius: 4px;
+    background-color: #0ca789;
+    border-radius: 4px;
     transition: all 0.2s ease-out;
 }
 
