@@ -1,0 +1,59 @@
+.form-container {
+    text-align: center;
+    color: var(--darkest-green);
+}
+
+.select {
+    font-size: 17px;
+    padding-top: 1rem;
+}
+
+.input {
+    font-size: 17px;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+}
+
+.btn {
+    background-color: var(--red);
+    border: none;
+    border-radius: 5px;
+    color: var(--white);
+    font-size: 17px;
+    transition: transform 0.2s ease;
+    padding: 5px;
+    margin: 1rem;
+    width: 10rem
+}
+
+.btn:hover {
+    background-color: #F07F8A;
+    cursor: pointer;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px #435058ff;
+}
+
+.log-table {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1rem;
+    border-collapse: collapse;
+}
+
+.log-table th,
+.log-table td {
+    border: 1px solid var(--darkest-green);
+}
+
+.log-table th {
+    color: var(--white);
+    background-color: var(--yellow);
+    font-family: 'Archivo';
+    font-size: 17px;
+    font-weight: normal;
+    padding: 1rem;
+}
+
+.log-table td {
+    padding: 1rem;
+}
