@@ -1,8 +1,11 @@
+import ActivityName from './ActivityName.js'
+import ActivityPoints from './ActivityPoints.js'
+import './Activities.css'
 import { useState, useEffect } from 'react'
 
 const ViewLog = () => {
     const [activityLog, setActivityLog] = useState([])
-    //const [activity, setActivity] = useState([])
+    const [toggle, setToggle] = useState(false)
 
     useEffect(() => {
         const getActivityLog = async () => {
@@ -16,11 +19,31 @@ const ViewLog = () => {
         getActivityLog()
     }, [])
 
+    const handleToggle = () => {
+        setToggle(!toggle)
+    }
+
     return (
         <div>
-            {activityLog.map(activity => (
-                <p key={activity.id} value={activity.id}>{(activity.date).substring(0,10)} | {activity.activity_description}|</p>
-            ))}
+            <button className='btn' type='submit' onClick={handleToggle}>View Log</button>
+            {toggle && 
+                <table className='log-table'>
+                    <tbody>
+                        <tr>
+                            <th>Date</th>
+                            <th>Activity</th>
+                            <th>Description</th>
+                            <th>Points</th>
+                        </tr>
+                        {activityLog.map(activity => (
+                            <tr>
+                                <td key={activity.id}><p>{(activity.date).substring(0,10)}</p></td>
+                                <td key={activity.id}><ActivityName id={activity.activity_id} /></td>
+                                <td key={activity.id}><p>{activity.activity_description}</p></td>
+                                <td key={activity.id}><ActivityPoints id={activity.activity_id} /></td>
+                            </tr>))}
+                    </tbody>
+                </table>}
         </div>
     )
 }
