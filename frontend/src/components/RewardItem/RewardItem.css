@@ -19,6 +19,7 @@
     font-family: 'Archivo', sans-serif;
     font-size: 1.2em;
     margin: 0px;
+    font-weight: 400;
 }
 
 .reward-item-container h3 {
@@ -27,6 +28,7 @@
     font-family: 'Archivo', sans-serif;
     font-size: 1.2em;
     margin: 0px;
+    font-weight: 400;
 }
 
 .reward-item-container {

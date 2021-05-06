@@ -1,5 +1,7 @@
 import './Rewards.css'
 import { useEffect, useState } from 'react'
+import Alert from '@material-ui/lab/Alert';
+import Fade from '@material-ui/core/Fade';
 
 import VouchersImage from '../../images/vouchers.png'
 import FoodImage from '../../images/food_plants.png'
@@ -18,6 +20,20 @@ const Rewards = () => {
     const [ pointsBalance, setPointsBalance] = useState('')
 
     const [rewards, setRewards ] = useState([])
+
+    const [showFlash, setShowFlash] = useState(null);
+    const [flash, setFlash] = useState({
+      severity: '',
+      message: '',                                  
+    })
+
+    const displayFlashMessage = () => {
+        setShowFlash(true)
+        setTimeout(() => {
+        setShowFlash(false);
+        }, 6000);
+        window.scrollTo(0, 0)
+    }
 
     const updateUIPoints = (value) => {
         setPointsBalance(value)
@@ -48,6 +64,15 @@ const Rewards = () => {
 
     return (
         <div className='rewards-container'>
+            { 
+                showFlash
+                ? (
+                    <Fade in={showFlash} timeout={{ enter: 300, exit: 1000 }}>
+                        <Alert className="alert" severity={flash.severity}>{flash.message}</Alert>
+                    </Fade>
+                    )
+                : null 
+            }
             <div className='title-container'>
                 <h1>Rewards</h1>
                 <p>Redeem your points here!<br></br>Click a category to discover what rewards are currently available.</p>
@@ -78,7 +103,7 @@ const Rewards = () => {
 
             { rewards.length > 0 &&
              (rewards.map(reward => (
-                    <RewardItem name={reward.reward_name} points={reward.reward_points} id={reward.id} pointsBalance={pointsBalance} updateUIPoints={updateUIPoints} />
+                    <RewardItem name={reward.reward_name} points={reward.reward_points} id={reward.id} pointsBalance={pointsBalance} updateUIPoints={updateUIPoints} setFlash={setFlash} displayFlashMessage={displayFlashMessage}/>
                 ))) 
             }
 
