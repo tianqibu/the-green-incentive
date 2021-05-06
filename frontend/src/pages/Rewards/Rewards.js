@@ -18,11 +18,9 @@ const Rewards = () => {
     }, [])
 
     const [ pointsBalance, setPointsBalance] = useState('')
-
-    const [rewards, setRewards ] = useState([])
-
-    const [showFlash, setShowFlash] = useState(null);
-    const [flash, setFlash] = useState({
+    const [ rewards, setRewards ] = useState([])
+    const [ showFlash, setShowFlash ] = useState(null);
+    const [ flash, setFlash ] = useState({
       severity: '',
       message: '',                                  
     })
@@ -39,13 +37,11 @@ const Rewards = () => {
     }
 
     const getRewards = async (value) => {
-
         const res = await fetch(`/api/rewards/${value}`, {
             method: 'GET'
         })
-
+        
         const data = await res.json()
-
         setRewards(data)
     }
 

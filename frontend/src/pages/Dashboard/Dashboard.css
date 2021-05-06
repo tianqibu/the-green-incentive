@@ -8,12 +8,7 @@
 .dashboard-container p {
     text-align: center;
     font-family: Archivo, sans-serif;
-    margin: 5px;
-}
-
-.progress {
-    margin-top: 15px;
-    margin-bottom: 10px;
+    margin: 10px;
 }
 
 .points {
@@ -38,28 +33,35 @@
     transition: transform 0.2s ease;
     width: 100px;
     height: 100%;
-    padding: 5px;
-    margin-left: 5px;
+    padding: 6px;
     font-family: Archivo, sans-serif;
+    margin: auto;
 }
 
-.dashboard-container input {
+.dashboard-container input[type=number] {
     padding: 5px;
     border-radius: 5px;
     width: 100px;
-    height: 100%;
     outline: none;
     border: solid 1px grey;
     font-family: Archivo, sans-serif;
-    margin-top: 10px;
 }
 
-.set-goal {
-    margin: auto;
-    width: 24%;
-    margin-top: 20px;
-    margin-bottom: 10px;
+.center-container {
+    text-align: center;
+    width: 100%;
 }
+
+.set-goal input { 
+    margin: 5px;
+    display: inline;
+    text-align: center;
+}
+
+.set-goal { 
+    padding-top: 10px;
+}
+
     
 .dashboard-container input[type=submit]:hover {
     background-color: #F07F8A;

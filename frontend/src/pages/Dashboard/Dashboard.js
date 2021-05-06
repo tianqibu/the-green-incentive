@@ -10,7 +10,8 @@ const Dashboard = () => {
     const [ userDetails, setUserDetails ] = useState({
         username: '',
         points: '',
-        goal: ''
+        goal: '',
+        percentage: ''
     })
 
     const handleChange = (e) => {
@@ -19,12 +20,18 @@ const Dashboard = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+
+        if (userDetails.goal < userDetails.points) {
+            alert('Goal must be greater than your current points.')
+        }
+
         const percentage = Math.round(userDetails.points/userDetails.goal * 100)
-        localStorage.setItem('percentage', percentage);
 
         await fetch(`/api/goals/${userDetails.goal}`, {
             method: 'GET',
           })
+
+          setUserDetails({ ...userDetails, percentage: percentage })
     }
 
     useEffect(() => {
@@ -35,10 +42,13 @@ const Dashboard = () => {
     
             const data = await res.json()
 
+            const percentage = Math.round(data.points/data.goal * 100)
+
             setUserDetails({
                 username: data.username,
                 points: data.points,
-                goal: data.goal
+                goal: data.goal,
+                percentage: percentage
             })
            
             return data
@@ -57,22 +67,24 @@ const Dashboard = () => {
             <div className="points">
                 <p className="bold">Points balance</p>
                 <p>{userDetails.points}</p>
-            </div>
-        
-            <div className="set-goal">
                 <p className="bold">Goal progress</p>
-                <form onSubmit={handleSubmit}>
-                    <input
-                        type="number"
-                        name="number"
-                        placeholder="Enter number"
-                        onChange={(e) => handleChange(e.target.value)}
-                    />
-                    <input type="submit" value="Set goal" />
-            </form>
             </div>
             <div className="progress">
-                <ProgressBar/>
+                <p>Current goal: {userDetails.goal}</p>
+                <ProgressBar percentage={userDetails.percentage}/>
+                <div className="set-goal">
+                    <form onSubmit={handleSubmit}>
+                        <div className="center-container">
+                            <input
+                                type="number"
+                                name="number"
+                                placeholder="Enter number"
+                                onChange={(e) => handleChange(e.target.value)}
+                            />
+                            <input type="submit" value="Set goal" />
+                        </div>
+                    </form>
+                </div>
             </div> 
             <DashboardImages/>
         </div>

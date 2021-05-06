@@ -1,11 +1,11 @@
 import Filler from './Filler'
 import './ProgressBar.css'
 
-const ProgressBar = ({percentage}) => {
+const ProgressBar = ({ percentage }) => {
 
     return (
         <div className="progress-bar">
-            <Filler />
+            <Filler percentage={percentage}/>
         </div>
     )
 }
