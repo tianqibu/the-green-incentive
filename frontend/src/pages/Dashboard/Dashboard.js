@@ -2,12 +2,15 @@ import Title from '../../components/Title/Title'
 import DashboardImages from '../../components/DashboardImages/DashboardImages'
 import ProgressBar from '../../components/ProgressBar/ProgressBar'
 import { useState, useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 import Alert from '@material-ui/lab/Alert';
 import Fade from '@material-ui/core/Fade';
 
 import './Dashboard.css'
 
 const Dashboard = () => {
+
+    const history = useHistory() 
 
     const [ userDetails, setUserDetails ] = useState({
         username: '',
@@ -62,7 +65,11 @@ const Dashboard = () => {
     
             const data = await res.json()
 
-            const percentage = Math.round(data.points/data.goal * 100)
+            let percentage = Math.round(data.points/data.goal * 100)
+
+            if (isNaN(percentage)) {
+                percentage = 0
+            }
 
             setUserDetails({
                 username: data.username,
@@ -80,6 +87,10 @@ const Dashboard = () => {
     }, [])
 
     return (
+        <> 
+        {
+            localStorage.getItem('loggedIn') 
+            ? 
         <>
         { 
                 showFlash
@@ -118,6 +129,9 @@ const Dashboard = () => {
                 </div> 
                 <DashboardImages/>
             </div>
+        </>
+        : (history.push('/sign-in')) 
+        }
         </>
     )
 }
