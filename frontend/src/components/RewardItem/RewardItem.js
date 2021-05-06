@@ -8,14 +8,12 @@ const RewardItem = ({name, points, id, pointsBalance, updateUIPoints, setFlash, 
         if (pointsBalance < points) {
             console.log('Total points: ', pointsBalance)
             console.log('Points: ', points)
-            // alert('Error! You do not have enough points.')
             displayFlashMessage();
             setFlash({
                 message: `Error! You do not have enough points.`,
                 severity:'error'
             })
         } else if (pointsBalance >= points && reward_id === 13 ) {
-            // alert('Sucess! A tree has been planted in your name. Check your garden.')
             displayFlashMessage();
             setFlash({
                 message: `Success! A tree has been planted in your name. Check your garden.`,
@@ -28,7 +26,6 @@ const RewardItem = ({name, points, id, pointsBalance, updateUIPoints, setFlash, 
             updateUIPoints(newBalance)
             console.log('Tree route')
         } else {
-            // alert('Sucess! The voucher has been sent to your email address.')
             displayFlashMessage();
             setFlash({
                 message:`Sucess! A voucher for ${name} has been sent to your email address.`,
