@@ -26,7 +26,7 @@ const ViewLog = () => {
     return (
         <div>
             <button className='btn' type='submit' onClick={handleToggle}>View Log</button>
-            {toggle && 
+            {toggle & activityLog.length !== 0 ?
                 <table className='log-table'>
                     <tbody>
                         <tr>
@@ -43,7 +43,7 @@ const ViewLog = () => {
                                 <td key={activity.id}><ActivityPoints id={activity.activity_id} /></td>
                             </tr>))}
                     </tbody>
-                </table>}
+                </table> : toggle && <p>You have no activities in your log.</p>}
         </div>
     )
 }
