@@ -60,9 +60,12 @@ const SignIn = () => {
       // window.setTimeout(() => {
       //   history.go(0)
       // }, 3000)
-      // history.go(0)
     } else {
-      console.log(`Error: Unable to log ${values.username} in`);
+      displayFlashMessage();
+      setFlash({
+          message: `Error: Unable to log ${values.username} in`,
+          severity:'error'
+        })
     }
   };
 

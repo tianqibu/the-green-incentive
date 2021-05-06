@@ -3,21 +3,23 @@ import ActivityPoints from './ActivityPoints.js'
 import './Activities.css'
 import { useState, useEffect } from 'react'
 
-const ViewLog = () => {
-    const [activityLog, setActivityLog] = useState([])
+const ViewLog = ({ activityLog }) => {
+    // const [activityLog, setActivityLog] = useState([])
     const [toggle, setToggle] = useState(false)
 
-    useEffect(() => {
-        const getActivityLog = async () => {
-            const res = await fetch('/api/activities/log', {
-                method: 'GET',
-            })
-            const data = await res.json()
-            setActivityLog(data)
-        }
+    // useEffect(() => {
+    //     const getActivityLog = async () => {
+    //         const res = await fetch('/api/activities/log', {
+    //             method: 'GET',
+    //         })
+    //         const data = await res.json()
+    //         setActivityLog(data)
+    //     }
   
-        getActivityLog()
-    }, [])
+    //     getActivityLog()
+    // }, [])
+
+    // console.log(activityLog)
 
     const handleToggle = () => {
         setToggle(!toggle)
@@ -37,11 +39,12 @@ const ViewLog = () => {
                         </tr>
                         {activityLog.map(activity => (
                             <tr>
-                                <td key={activity.id}><p>{(activity.date).substring(0,10)}</p></td>
+                                <td key={activity.id}><p>{activity.date && activity.date.substring(0,10)}</p></td>
                                 <td key={activity.id}><ActivityName id={activity.activity_id} /></td>
                                 <td key={activity.id}><p>{activity.activity_description}</p></td>
                                 <td key={activity.id}><ActivityPoints id={activity.activity_id} /></td>
-                            </tr>))}
+                            </tr>
+                        ))}
                     </tbody>
                 </table>}
         </div>

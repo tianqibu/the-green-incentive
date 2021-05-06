@@ -1,12 +1,13 @@
 import './Activities.css'
 import { useState, useEffect } from 'react'
+import ActivityLog from '../../pages/ActivityLog/ActivityLog'
 
-const Activities = ({ displayFlashMessage, setFlash }) => {
+const Activities = ({ displayFlashMessage, setFlash, setActivityLog, activityLog }) => {
     const [activities, setActivities] = useState([])
     const [activity, setActivity] = useState([])
     const [activityDescription, setActivityDescription] = useState('')
 
-    const logActivity = {
+    let logActivity = {
         'activity_id': activity.id,
         'activity_description': activityDescription
     }
@@ -19,8 +20,9 @@ const Activities = ({ displayFlashMessage, setFlash }) => {
             const data = await res.json()
             setActivities(data)
         }
-  
+
         getActivities()
+
     }, [])
 
     const handleChange = (e) => {
@@ -46,14 +48,12 @@ const Activities = ({ displayFlashMessage, setFlash }) => {
 
     const addActivity = async () => {
         if (activity <= 0) {
-            // alert('Please select an activity.')
             displayFlashMessage();
             setFlash({
                 message: `Error: Please select an activity.`,
                 severity:'error'
             })
         } else if (activityDescription.length === 0) {
-            // alert('Please input an activity description.')
             displayFlashMessage();
             setFlash({
                 message: `Error: Please input an activity description.`,
@@ -66,8 +66,20 @@ const Activities = ({ displayFlashMessage, setFlash }) => {
                 body: JSON.stringify(logActivity),
             })
             if (res.status === 200) {
-                window.location.reload()
-                // alert('Activity logged.')
+
+                // Show logged activity in UI
+        
+                var today = new Date();
+                var date = today.getFullYear()+'-'+(((today.getMonth()+1) < 10) ?"0":"")+(today.getMonth()+1)+'-'+(((today.getDate()) < 10) ?"0":"")+today.getDate();
+
+                logActivity = {
+                    ...logActivity, 
+                    date: date
+                }
+
+                setActivityLog([...activityLog, logActivity])
+
+                // Display success message
                 displayFlashMessage();
                 setFlash({
                     message: `Activity logged.`,
@@ -75,7 +87,8 @@ const Activities = ({ displayFlashMessage, setFlash }) => {
                 })
                 
             } else {
-                alert('Unsuccessful.')
+
+                // Display error message
                 displayFlashMessage();
                 setFlash({
                     message: `Error: Unsuccessful.`,

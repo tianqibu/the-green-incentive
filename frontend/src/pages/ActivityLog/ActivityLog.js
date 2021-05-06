@@ -3,9 +3,11 @@ import ViewLog from '../../components/Activities/ViewLog.js'
 import Alert from '@material-ui/lab/Alert';
 import Fade from '@material-ui/core/Fade';
 import './ActivityLog.css'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 const ActivityLog = () => {
+
+    const [activityLog, setActivityLog] = useState([])
 
     const [showFlash, setShowFlash] = useState(null);
     const [flash, setFlash] = useState({
@@ -20,6 +22,18 @@ const ActivityLog = () => {
         }, 6000);
     }
 
+    useEffect(() => {
+        const getActivityLog = async () => {
+            const res = await fetch('/api/activities/log', {
+                method: 'GET',
+            })
+            const data = await res.json()
+            setActivityLog(data)
+            console.log('Activity log data: ', data)
+        }
+  
+        getActivityLog()
+    }, [])
 
     return (
         <>  
@@ -34,8 +48,8 @@ const ActivityLog = () => {
             }
             <div className='activity-container'>
                 <h1>Activities</h1>
-                <Activities displayFlashMessage={displayFlashMessage} setFlash={setFlash}/>
-                <ViewLog />
+                <Activities displayFlashMessage={displayFlashMessage} setFlash={setFlash} setActivityLog={setActivityLog} activityLog={activityLog} />
+                <ViewLog activityLog={activityLog} />
             </div>
         </>
     )
