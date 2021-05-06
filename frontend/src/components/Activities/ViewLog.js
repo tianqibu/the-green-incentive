@@ -4,22 +4,7 @@ import './Activities.css'
 import { useState, useEffect } from 'react'
 
 const ViewLog = ({ activityLog }) => {
-    // const [activityLog, setActivityLog] = useState([])
     const [toggle, setToggle] = useState(false)
-
-    // useEffect(() => {
-    //     const getActivityLog = async () => {
-    //         const res = await fetch('/api/activities/log', {
-    //             method: 'GET',
-    //         })
-    //         const data = await res.json()
-    //         setActivityLog(data)
-    //     }
-  
-    //     getActivityLog()
-    // }, [])
-
-    // console.log(activityLog)
 
     const handleToggle = () => {
         setToggle(!toggle)
