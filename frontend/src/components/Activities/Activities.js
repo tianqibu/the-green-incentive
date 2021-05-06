@@ -1,3 +1,5 @@
+import './Activities.css'
+
 import { useState, useEffect } from 'react'
 
 const Activities = () => {
@@ -55,6 +57,7 @@ const Activities = () => {
                 body: JSON.stringify(logActivity),
             })
             if (res.status === 200) {
+                window.location.reload()
                 alert('Activity logged.')
             } else {
                 alert('Unsuccessful.')
@@ -63,10 +66,10 @@ const Activities = () => {
     }
 
     return (
-        <div>
+        <div className='form-container'>
             <form>
-                <div>
-                    <label>Select an activity:</label>
+                <div className='select'>
+                    <label>Select an activity: </label>
                     <select onChange={handleChange}>
                         <option value='-1'>Select an activity:</option>
                         {activities.map(activity => (
@@ -79,12 +82,12 @@ const Activities = () => {
                     </div>}
                 </div>
 
-                <div>
-                    <label>Input activity description:</label>
+                <div className='input'>
+                    <label>Input description: </label>
                     <input type='text' placeholder='Activity description' value={activityDescription} onChange={handleDescChange}/>
                 </div>
                 
-                <button type='submit' onClick={handleSubmit}>Log Activity</button>
+                <button className='btn' type='submit' onClick={handleSubmit}>Log Activity</button>
             </form>
         </div>
     )
